@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Starter</title>
+<meta name="theme-color" content="#8fb8e6">
+<link rel="icon" href="data:,"><!-- replace with the brand's icon -->
+<link rel="stylesheet" href="starter.css">
+<!-- Boot: theme from storage before paint, and the .js class. -->
+<script>try{var t=localStorage.getItem('site-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+<!-- The signature technique's scripts go here, after site.js (see MOTION.md and references/catalogue.md). -->
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="Home">
+        <!-- A placeholder mark. Give the brand's mark a motion of its own (references/techniques.md). -->
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="9"/></svg>
+        Brand
+      </a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">◐</button>
+      <a class="button" href="#closing">Get started<span class="knob-dot" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap split section" style="--pad: 64px">
+      <div class="stack">
+        <p class="eyebrow">The subject · in one line</p>
+        <h1>The thesis of the page, said plainly.</h1>
+        <p class="lead">One or two sentences on what this is and who it is for.</p>
+        <a class="button" href="#closing">Get started<span class="knob-dot" aria-hidden="true">→</span></a>
+      </div>
+      <!-- The signature's most telling moment usually lives here, or across the whole hero. -->
+      <div class="stage" data-parallax></div>
+    </div>
+  </section>
+
+  <section id="story" class="section">
+    <div class="wrap">
+      <div class="stack section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Every section has a real job and real content</h2>
+      </div>
+      <div class="cards">
+        <article class="card"><h3>First</h3><p>Copy, a product, numbers or a list. The motion adds to it; the content never depends on it.</p></article>
+        <article class="card beam"><h3>Second</h3><p>Each section looks finished with the motion removed, in both themes.</p></article>
+        <article class="card"><h3>Third</h3><p>Motion comes from the subject's own verbs, written down in MOTION.md.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section night on-night">
+    <div class="wrap">
+      <p class="statement" data-fill>A statement that fills in as it is read: one sentence the page exists to say, readable at rest.</p>
+    </div>
+  </section>
+
+  <section id="closing" class="section">
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="cta stack">
+        <h2>The one thing the page asks for</h2>
+        <a class="button" href="#top">Start<span class="knob-dot" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><p class="footer-mark" data-glow aria-hidden="true">Brand</p></footer>
+<!-- A fixed scene layer (the particle cloud) goes here, as the LAST child of <body> (references/particles.md). -->
+</body>
+</html>

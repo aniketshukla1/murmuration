@@ -1,0 +1,108 @@
+/*
+ * Starter for a murmuration site: one continuous sky, each section a moment of it.
+ * The signature technique (MOTION.md) mounts on top; nothing here assumes which one.
+ * Replace the tokens with the brand's own; keep the stacking rules at the end.
+ */
+:root {
+  color-scheme: light;
+  --sky-1: #8fb8e6;
+  --sky-2: #c8ddf2;
+  --sky-3: #f7dcc5;
+  --day: #f7f9fc;
+  --night-1: #1b1e3a;
+  --night-2: #10132b;
+  --dusk-1: #f4b688;
+  --dusk-2: #c47b8a;
+  --dusk-3: #4b4270;
+  --ink: #111c2b;
+  --ink-2: #44546a;
+  --line: rgba(17, 28, 43, 0.12);
+  --card: rgba(255, 255, 255, 0.72);
+  --card-line: rgba(255, 255, 255, 0.85);
+  --accent: #3a42c4;
+  --accent-ink: #ffffff;
+  --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --page: 1160px;
+  --gutter: clamp(18px, 4vw, 44px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark; --sky-1: #060d1b; --sky-2: #0e1c36; --sky-3: #262a4c; --day: #0e1525; --ink: #e9eff6; --ink-2: #aab6c6; --line: rgba(255, 255, 255, 0.1); --card: rgba(20, 29, 44, 0.66); --card-line: rgba(255, 255, 255, 0.08); --dusk-1: #2a2032; --dusk-2: #251c33; --dusk-3: #1c1b37; }
+}
+:root[data-theme="dark"] { color-scheme: dark; --sky-1: #060d1b; --sky-2: #0e1c36; --sky-3: #262a4c; --day: #0e1525; --ink: #e9eff6; --ink-2: #aab6c6; --line: rgba(255, 255, 255, 0.1); --card: rgba(20, 29, 44, 0.66); --card-line: rgba(255, 255, 255, 0.08); --dusk-1: #2a2032; --dusk-2: #251c33; --dusk-3: #1c1b37; }
+/* Night sections keep their own ink in both themes */
+.on-night { --ink: #f5f1f2; --ink-2: rgba(245, 241, 242, 0.78); --line: rgba(255, 255, 255, 0.12); --card: rgba(255, 255, 255, 0.06); --card-line: rgba(255, 255, 255, 0.1); color: var(--ink); color-scheme: dark; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--day); color: var(--ink); font: 400 1.0625rem/1.6 var(--font-body); overflow-x: clip; }
+img, svg, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2 { font-family: var(--font-display); font-weight: 400; margin: 0; letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; }
+h1 { font-size: clamp(2.6rem, 1.2rem + 4.2vw, 4.8rem); }
+h2 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem); }
+p { margin: 0; }
+.wrap { max-width: calc(var(--page) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
+.eyebrow { font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.lead { font-size: 1.2rem; color: var(--ink-2); max-width: 34em; }
+.section { --pad: clamp(84px, 11vw, 150px); padding-block: var(--pad); }
+.stack { display: grid; gap: 18px; justify-items: start; }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.stage { position: relative; min-height: clamp(360px, 40vw, 520px); }
+@media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.card { border-radius: 24px; background: var(--card); box-shadow: inset 0 0 0 1px var(--card-line); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); padding: 24px; }
+.button { display: inline-flex; align-items: center; gap: 14px; min-height: 54px; padding: 0 7px 0 1.5rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 500; text-decoration: none; }
+.knob-dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--accent); }
+
+/* Header with the 3D mark: stacked layers turned in perspective */
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; padding-block: 12px; }
+.bar { display: flex; align-items: center; gap: 16px; min-height: 58px; padding: 8px 8px 8px 16px; border-radius: 999px; background: var(--card); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); box-shadow: inset 0 0 0 1px var(--card-line); }
+.brand { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; color: var(--ink); text-decoration: none; font: 500 1.3rem/1 var(--font-display); }
+.mark { width: 30px; height: 30px; fill: var(--accent); }
+.theme-toggle { display: none; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: var(--ink-2); cursor: pointer; }
+.js .theme-toggle { display: grid; place-items: center; }
+
+/* Skies */
+.hero { margin-top: -82px; padding-top: 82px; background: linear-gradient(180deg, var(--sky-1), var(--sky-2) 55%, var(--sky-3)); }
+.sky-day { background: var(--day); }
+.night { background: linear-gradient(180deg, var(--night-1), var(--night-2)); }
+.backdrop { position: absolute; top: var(--pad); bottom: var(--pad); left: max(var(--gutter), calc((100% - var(--page)) / 2)); right: max(var(--gutter), calc((100% - var(--page)) / 2)); border-radius: 32px; background: linear-gradient(160deg, var(--sky-1), var(--sky-2) 55%, var(--sky-3)); }
+.cta { padding: clamp(32px, 6vw, 80px); }
+.cta .anchor { position: relative; width: min(100%, 340px); height: 190px; }
+
+
+/* Pointer light: card spotlight, border beam, button sheen, phone tilt, footer wordmark (site.js drives the variables) */
+.spot { background-image: radial-gradient(340px circle at var(--sx, 50%) var(--sy, -40%), var(--spot-light, transparent), transparent 62%); }
+.spot:hover { --spot-light: color-mix(in srgb, var(--ink) 8%, transparent); }
+@property --beam-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.beam { position: relative; }
+.beam::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; background: conic-gradient(from var(--beam-angle), transparent 0 68%, #f2b533 80%, var(--accent) 86%, transparent 93%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); animation: beam 7s linear infinite; pointer-events: none; }
+@keyframes beam { to { --beam-angle: 360deg; } }
+.button { position: relative; overflow: hidden; }
+.button::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 32%, rgba(255, 255, 255, 0.32) 50%, transparent 68%); transform: translateX(-130%); animation: sheen 6s ease-in-out infinite; pointer-events: none; }
+@keyframes sheen { 0%, 72% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
+.phone { transform: perspective(1000px) rotateY(calc(var(--tx, 0) * 9deg)) rotateX(calc(var(--ty, 0) * -7deg)); transition: transform 0.5s ease; }
+.site-footer { position: relative; overflow: hidden; padding-block: 60px; }
+.footer-mark { position: relative; z-index: 1; margin: 0; text-align: center; font: 300 clamp(5rem, 1rem + 19vw, 19rem)/0.78 var(--font-display); letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 16%, transparent); background-image: radial-gradient(420px circle at var(--fx, 50%) var(--fy, 70%), var(--accent), transparent 58%); -webkit-background-clip: text; background-clip: text; user-select: none; }
+
+/* Content */
+.section-head { margin-bottom: clamp(28px, 4vw, 48px); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.cards h3 { margin: 0 0 8px; font: 500 1.3rem/1.2 var(--font-display); }
+.statement { max-width: 22em; margin: 0; font: 400 clamp(1.9rem, 1.2rem + 2.6vw, 3.4rem)/1.15 var(--font-display); letter-spacing: -0.02em; }
+.js .statement .word { color: color-mix(in srgb, var(--ink) 32%, transparent); transition: color 0.3s ease; }
+.js .statement .word.on { color: var(--ink); }
+
+/* Stacking: section skies under the particles, content over them. Keep these. */
+.hero, .section { position: relative; }
+.wrap { position: relative; z-index: 1; }
+.anchor { position: absolute; pointer-events: none; }
+.scene-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.scene-layer canvas { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; opacity: 0; transition: opacity 1s ease; }
+.has-scene .scene-layer canvas { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
