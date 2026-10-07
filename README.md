@@ -1,9 +1,6 @@
 <div align="center">
 
-<a href="https://aniketshukla1.github.io/murmuration/"><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.webp">
-  <img src="docs/logo-light.webp" width="600" alt="Murmuration: a flock of birds forms a serif M that turns in 3D beside the wordmark; a falcon cuts through it and the flock closes again.">
-</picture></a>
+<a href="https://aniketshukla1.github.io/murmuration/"><img src="docs/logo.webp" width="640" alt="Murmuration: against a sunset, a flock of birds forms a serif M that turns in 3D beside the wordmark; a falcon cuts through it and the flock closes again."></a>
 
 **Websites that move like what they're about.**
 
