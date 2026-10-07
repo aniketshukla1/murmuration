@@ -58,7 +58,7 @@ If every screenshot comes back the same small size and `scene running: false`, t
 - If this session already built a site, the two do not share a signature unless both briefs say why.
 
 ## 6. Headless is not the whole truth
-Headless Chrome renders WebGL in software (SwiftShader) and composites canvases differently from a GPU browser. A canvas can look right in every headless shot and show nothing on the visitor's Mac. Before saying it works, take at least one screenshot of each dark section in the browser pane, which uses the GPU. If a shape is "there" in the debug readout but invisible in the pane, read the canvas pixels in a `requestAnimationFrame` (`gl.readPixels` on `canvas.getContext('webgl2')`). Lit pixels that never reach the screen mean a compositing problem, usually colour brighter than alpha.
+Headless Chrome renders WebGL in software (SwiftShader) and composites canvases differently from a GPU browser. A canvas can look right in every headless shot and show nothing on the visitor's Mac. Before saying it works, take at least one screenshot of each dark section in a real GPU browser: your agent's built-in browser, a browser automation tool (Playwright, Chrome DevTools), or the user's own browser if you have none. If a shape is "there" in the debug readout but invisible there, read the canvas pixels in a `requestAnimationFrame` (`gl.readPixels` on `canvas.getContext('webgl2')`). Lit pixels that never reach the screen mean a compositing problem, usually colour brighter than alpha.
 
-## 7. The browser pane
-The built-in browser pane is narrow and scales larger viewports down. Use it for interaction checks; use `shoot.mjs` for layout and for anything wider than the pane.
+## 7. Built-in browsers
+An agent's built-in browser is often narrow and scales larger viewports down. Use it for interaction checks; use `shoot.mjs` for layout and for anything wider than it.

@@ -2,13 +2,22 @@
   "name": "murmuration",
   "displayName": "Murmuration",
   "version": "1.0.0",
-  "description": "Cinematic 3D websites in plain HTML, CSS and JS: one WebGL particle cloud takes a new shape for each section as you scroll. No framework, no CDN, no build step.",
+  "description": "Websites that move like what they're about. It reads your subject, finds its verb and builds the site in plain HTML, CSS and JS, with real 3D made in code. No framework, no build step.",
   "author": {
     "name": "Aniket Shukla",
     "url": "https://github.com/aniketshukla1"
   },
-  "homepage": "https://github.com/aniketshukla1/murmuration",
+  "homepage": "https://aniketshukla1.github.io/murmuration/",
   "repository": "https://github.com/aniketshukla1/murmuration",
   "license": "MIT",
-  "keywords": ["webgl", "particles", "3d-website", "landing-page", "scroll-animation", "shader-background", "no-build"]
+  "keywords": [
+    "motion-design",
+    "3d-website",
+    "threejs",
+    "webgl",
+    "scroll-animation",
+    "landing-page",
+    "creative-coding",
+    "no-build"
+  ]
 }

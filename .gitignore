@@ -3,3 +3,6 @@ node_modules/
 evals/results/
 shots/
 *.log
+site/examples
+site/vesper
+_site/

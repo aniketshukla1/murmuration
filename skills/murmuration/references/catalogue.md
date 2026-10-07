@@ -15,16 +15,18 @@ Libraries: the default is plain HTML, CSS and JS with no build step. Where a tec
 
 ### 2. A 3D object
 - **What:** one object rendered with weight: a product turning toward the pointer or under drag, a hero object relit section by section, a configurator, a camera moving through real depth as you scroll.
-- **Fits:** products that have a model (shoes, watches, devices, furniture, cars, bottles), architecture, collectibles.
+- **Fits:** products that have a model (shoes, watches, devices, furniture, cars, bottles); with no model, any object from the subject's world that can be built from primitives (a frame, a vessel, a stack, a tool, a machine part, a building); architecture; collectibles.
 - **How:** Three.js as an ES module through an import map, `GLTFLoader` (with Draco if the model is compressed), one environment light plus one key light, tone mapping. Render on demand: only when the camera, pointer or scroll changes. Scroll drives a single number (0 to 1) that the camera, light and materials read. For a few flat faces (cards, boxes, a device lid), CSS 3D transforms are enough and need no library.
+- **How, with no model:** build it in code: `BoxGeometry` and `CylinderGeometry` for parts, `LatheGeometry` for turned shapes, `ExtrudeGeometry` for profiles, `InstancedMesh` for repeats, `MeshStandardMaterial` lit by `RoomEnvironment` through `PMREMGenerator`. Animate the subject's verb on the scroll number: the object assembled piece by piece, filled, turned, opened, loaded. Map both entry points, pinned, so addons resolve: `{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}` (vendor both for real hosting).
+- **Make it look made, not default:** ACES tone mapping and sRGB output; one warm key light and a cool fill; fog matched to the page background so the object sits in the page, not in a box; a soft contact shadow under it; materials with roughness (wood, ceramic, steel, paper), never plain shiny plastic; a slow camera that lands on a framed composition at each section and holds while text is read.
 - **Cost:** model weight (aim under 2 MB compressed), a WebGL context, loading time; show a still render until the model is ready.
-- **At rest:** a rendered still of the same object.
+- **At rest:** the finished object held still under reduced motion; without WebGL, a rendered or drawn (SVG) still of it.
 - **Seen on:** Oryzo (the product travels through Z depth as you scroll), Scout Motors (cinematic vehicle configurator).
 
 ### 3. A 3D world or flythrough
 - **What:** a small world the visitor moves through: a camera on a spline driven by scroll, a landscape under fog, a tiny planet to drive around, rooms that open one by one.
 - **Fits:** places (resorts, estates, parks), games, campaigns, portfolios that want play.
-- **How:** Three.js; a `CatmullRomCurve3` for the camera path, `getPointAt(progress)` and a look-at target ahead on the same curve; fog and baked lighting instead of real-time shadows; instanced meshes for repeats.
+- **How:** Three.js; a `CatmullRomCurve3` for the camera path, `getPointAt(progress)` and a look-at target ahead on the same curve; fog and baked lighting instead of real-time shadows; instanced meshes for repeats. With no models, build the world from primitives and instancing (terrain from a displaced plane, water from a shader surface, repeated buildings, trees or crates as instanced boxes and cones), lit and finished as in 2.
 - **Cost:** the heaviest technique. Needs a strong art direction and a phone plan (a shorter path, fewer objects).
 - **At rest:** a sequence of stills, one per stop on the path, as a normal scrolling page.
 - **Seen on:** Explore Primland (aerial flythrough), Messenger (a tiny planet to deliver on), Bruno Simon's portfolio (a world to drive through).

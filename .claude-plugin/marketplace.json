@@ -1,6 +1,6 @@
 {
   "name": "murmuration",
-  "description": "Murmuration, a skill for cinematic 3D websites with no build step.",
+  "description": "Murmuration, a skill that designs a motion language for each website.",
   "owner": {
     "name": "Aniket Shukla"
   },
@@ -8,7 +8,7 @@
     {
       "name": "murmuration",
       "source": "./",
-      "description": "Cinematic 3D websites in plain HTML, CSS and JS: one WebGL particle cloud takes a new shape for each section as you scroll."
+      "description": "Websites that move like what they're about: it finds your subject's verb and builds the site in plain HTML, CSS and JS, with real 3D made in code."
     }
   ]
 }

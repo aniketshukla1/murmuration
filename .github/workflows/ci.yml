@@ -12,6 +12,8 @@ jobs:
           node-version: 22
       - name: Scripts parse
         run: for f in skills/murmuration/templates/*.js skills/murmuration/scripts/*.mjs demo/*.js tools/*.mjs; do node --check "$f"; done
+      - name: Website scripts parse
+        run: node --check site/site.js && node --experimental-default-type=module --check site/flock.js
       - name: Skill and plugin manifests
         run: python3 tools/check.py
       - name: Demo renders in headless Chrome
@@ -21,8 +23,17 @@ jobs:
           EXTRA="--no-sandbox" node skills/murmuration/scripts/shoot.mjs "http://127.0.0.1:5050/demo/index.html" shots 1440 900 dark "0,#route+0,#terminus+0" | tee shoot.log
           grep -q "scene running: true" shoot.log
           grep -q "no console errors" shoot.log
+      - name: Website renders in headless Chrome
+        run: |
+          mkdir -p _site && cp -R site/. _site/ && cp -R examples _site/examples && cp -R demo _site/vesper
+          python3 -m http.server 5051 --bind 127.0.0.1 --directory _site &
+          sleep 1
+          EXTRA="--no-sandbox" node skills/murmuration/scripts/shoot.mjs "http://127.0.0.1:5051/" shots-site 1440 900 light "0,#ex-brenner+0,#install+0" | tee site.log
+          grep -q "no console errors" site.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: screenshots
-          path: shots
+          path: |
+            shots
+            shots-site

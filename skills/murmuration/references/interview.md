@@ -1,6 +1,6 @@
 # Interview: find the site the user can already see
 
-A mind-blowing site starts from what the user pictures, not from what is easy to build. Before the motion brief, read the project if there is one, then ask questions shaped by their prompt and what you found, in two short rounds, then offer two or three directions to choose from. Use the environment's question tool when there is one (in Claude Code, `AskUserQuestion`, with options drawn from the subject and a free-text answer always possible); otherwise ask in a numbered list and wait.
+A mind-blowing site starts from what the user pictures, not from what is easy to build. Before the motion brief, read the project if there is one, then ask questions shaped by their prompt and what you found, in two short rounds, then offer two or three directions to choose from. Use your agent's question tool when it has one, with options drawn from the subject and a free-text answer always possible; otherwise ask in a numbered list and wait.
 
 ## First, read the project
 
@@ -35,7 +35,7 @@ Choose up to four, the ones the prompt leaves open:
 
 Then the facts that decide what can be built:
 
-5. **Assets.** What exists: the logo as SVG, brand colours and fonts, photography, video, product renders or a turntable, a 3D model, illustration? (No renders means no image sequence; no model means no 3D object.)
+5. **Assets.** What exists: the logo as SVG, brand colours and fonts, photography, video, product renders or a turntable, a 3D model, illustration? (No renders means no image sequence; no model means no 3D of their own product, though a 3D scene built in code still can be.)
 6. **The story and the ask.** The sections or pages they need, the real facts and numbers to show, and the one thing a visitor should do (book, buy, sign up, read).
 7. **Visitors and limits.** Mostly phones or desktops; accessibility needs; light, dark or both; anything that must load fast; where it will be hosted.
 8. **Must and must not.** Anything they insist on, and anything they never want to see (no mascots, no autoplay sound, no stock video).

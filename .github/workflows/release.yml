@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Zip the skill (for claude.ai uploads)
+      - name: Zip the skill (for chat apps that take skill uploads)
         run: cd skills && zip -r ../murmuration-skill.zip murmuration
       - run: gh release create "$GITHUB_REF_NAME" murmuration-skill.zip --title "$GITHUB_REF_NAME" --generate-notes
         env:

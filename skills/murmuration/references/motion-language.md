@@ -1,6 +1,6 @@
 # Motion language: decide how this site moves
 
-Every site gets its own motion language, chosen from what the user pictures (`interview.md`) and what the subject is. No technique is the default: not particles, not a shader, not a 3D object. Two briefs about different subjects must not come out moving the same way by habit. The catalogue of techniques is in `catalogue.md`; this file is how to choose among them.
+Every site gets its own motion language, chosen from what the user pictures (`interview.md`) and what the subject is. The signature is a 3D scene unless the user asks for flat, but no technique is the default: not particles, not a turning hero object, not a flythrough. Which 3D, and what it shows, comes from the subject. Two briefs about different subjects must not come out moving the same way by habit. The catalogue of techniques is in `catalogue.md`; this file is how to choose among them.
 
 ## 1. Read the brief for motion
 
@@ -16,7 +16,7 @@ Before naming any technique, write down:
 
 Six lines, before any code, from the interview's answers and the direction the user chose (`interview.md`). Show them to the user before building.
 
-1. **Signature:** one technique and what it shows. ("An image sequence: the crane lifts a container as you scroll, 90 frames.")
+1. **Signature:** one technique and what it shows, in 3D unless the user asked for flat. ("A 3D scene built in code: a loaf rises and splits in the oven as you scroll, the camera easing in to the crust.")
 2. **Why this subject:** the verb it comes from, in the subject's own words.
 3. **Intensity, 1 to 10:** how much moves. 2 to 3 for a bank or a clinic (reveals and one quiet signature), 5 to 6 for most brands, 8 to 9 for a launch, a festival or a portfolio that is the work. The number sets the tier in the timing table below and caps the supporting moves.
 4. **Supporting moves:** two to four quiet ones (a line-by-line headline reveal, a cursor that labels links, a marquee of port names).
@@ -64,9 +64,11 @@ Start from the cues in the brief. Candidates, strongest first; the last column n
 
 The table proposes; the subject decides. A night-train company can be told with particles (stars, lit windows, snow); a ceramics studio with a 3D vase turning under the cursor; a bank with ledger lines that draw themselves. When two candidates fit, pick the one the subject's verbs describe best and the assets allow.
 
+The candidates are ideas, not the final form. Unless the user asked for flat, tell the chosen idea in 3D: a pottery studio's vase thrown on a turning wheel, a bike maker's frame joined tube by tube, a vineyard's rows rolling past at dusk. A flat line drawing or a type treatment is a supporting move or a chapter, not the signature.
+
 ## 4. Assets decide what is possible
 
-- **No assets at all:** kinetic type, line drawing, generative canvas, particles, shader fields, CSS 3D, physics with simple shapes. Never fake a product photo or a render.
+- **No assets at all:** a 3D object or small world built in code from primitives (`catalogue.md` 2 and 3), kinetic type, line drawing, generative canvas, particles, shader fields, CSS 3D, physics with simple shapes. Never fake a product photo or a render.
 - **Photography:** image transitions, depth layers cut from the photo, mask reveals, drag to explore.
 - **Film:** background loops, scroll-scrubbed video, video inside type or masks.
 - **Renders or a turntable export:** image sequence.

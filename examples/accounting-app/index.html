@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ledgerly · Invoices, expenses and tax, for freelancers</title>
+<meta name="description" content="Ledgerly helps freelancers send invoices, track expenses and set money aside for tax as they get paid.">
+<meta name="theme-color" content="#f6f2ea">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='4' width='40' height='40' rx='11' fill='%231f5c45'/%3E%3Cpath d='M14 17h20M14 24h20M14 32h20M14 36h20' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<script>try{var t=localStorage.getItem('ledgerly-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="ledger-scene.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="Ledgerly, home">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect class="mark-tile" x="4" y="4" width="40" height="40" rx="11"/>
+          <path class="mark-line" d="M14 17h20M14 24h20"/>
+          <path class="mark-rule" pathLength="1" d="M14 32h20M14 36h20"/>
+        </svg>
+        Ledgerly
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#invoices">Invoices</a>
+        <a href="#expenses">Expenses</a>
+        <a href="#tax">Tax</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z"/></svg>
+      </button>
+      <a class="button small" href="#pricing">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" data-stage="0">
+    <div class="wrap split">
+      <div class="stack">
+        <p class="eyebrow">Accounting for freelancers</p>
+        <h1>Every invoice paid. Every receipt kept. <em>Tax already set aside.</em></h1>
+        <p class="lead">Ledgerly sends your invoices, files your expenses as you spend, and moves your tax into its own pot the moment a client pays, so the money you see is money you can spend.</p>
+        <div class="actions">
+          <a class="button" href="#pricing">Start free for 30 days<span class="knob" aria-hidden="true">→</span></a>
+          <a class="link" href="#invoices">See how it works</a>
+        </div>
+        <ul class="assurances">
+          <li>No card needed</li>
+          <li>Read-only bank access</li>
+          <li>Export everything, anytime</li>
+        </ul>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <p class="tag tag-a"><span class="dot"></span>INV-0042 · Paid · $2,400.00</p>
+        <p class="tag tag-b"><span class="dot amber"></span>Tax pot · $624.00 set aside</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="invoices" data-stage="1">
+    <div class="wrap split">
+      <div class="stack">
+        <p class="eyebrow">01 · Invoices</p>
+        <h2>Invoices that get paid, without the chasing.</h2>
+        <p class="lead">Make a branded invoice in under a minute, let clients pay by card or bank transfer, and let Ledgerly send the polite reminders for you.</p>
+        <ul class="ticks">
+          <li>Card, bank transfer and Apple Pay on every invoice</li>
+          <li>Reminders before and after the due date, in your words</li>
+          <li>Recurring invoices for retainers</li>
+        </ul>
+        <article class="card invoice" data-play aria-label="Example invoice">
+          <header class="card-head">
+            <div><p class="label">Invoice INV-0042</p><p class="strong">Northwind Studio</p></div>
+            <p class="stamp">Paid</p>
+          </header>
+          <dl class="rows">
+            <div><dt>Brand identity, phase 2</dt><dd>$1,800.00</dd></div>
+            <div><dt>Website copy, 6 pages</dt><dd>$600.00</dd></div>
+            <div class="total"><dt>Total</dt><dd>$2,400.00</dd></div>
+          </dl>
+          <p class="foot"><span class="dot"></span>Paid by bank transfer · 3 days before due · Example</p>
+        </article>
+      </div>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section" id="expenses" data-stage="2">
+    <div class="wrap split">
+      <div class="stack">
+        <p class="eyebrow">02 · Expenses</p>
+        <h2>Receipts that sort themselves.</h2>
+        <p class="lead">Snap a receipt or forward the email. Ledgerly reads it, matches it to your bank feed and puts it in the right category, ready for tax time.</p>
+        <ul class="ticks">
+          <li>Photo, email or PDF: the amount and date are read for you</li>
+          <li>Matched to transactions from your bank, read-only</li>
+          <li>Categories that line up with your tax return</li>
+        </ul>
+        <article class="card" data-play aria-label="Example expenses">
+          <header class="card-head"><p class="label">This month · Example</p><p class="label">3 categories</p></header>
+          <dl class="rows">
+            <div><dt><span class="cat">Software</span>Figma, Adobe CC</dt><dd>$114.98</dd></div>
+            <div><dt><span class="cat">Travel</span>Train to client workshop</dt><dd>$86.40</dd></div>
+            <div><dt><span class="cat">Equipment</span>Monitor arm</dt><dd>$129.00</dd></div>
+            <div class="total"><dt>Deductible this month</dt><dd>$<span data-count-to="330">330</span>.38</dd></div>
+          </dl>
+        </article>
+      </div>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section" id="tax" data-stage="3">
+    <div class="wrap split">
+      <div class="stack">
+        <p class="eyebrow">03 · Tax</p>
+        <h2>Your tax, set aside the moment you're paid.</h2>
+        <p class="lead">Every payment is split as it lands: your estimated tax moves to a separate pot, and you see one honest number for what's yours to spend.</p>
+        <ul class="ticks">
+          <li>A rate based on your income so far this year, updated as you earn</li>
+          <li>Quarterly estimates with the date and amount, well ahead of time</li>
+          <li>Move the money automatically, or just keep count</li>
+        </ul>
+        <article class="card split-card" data-play aria-label="Example payment split">
+          <header class="card-head"><p class="label">Payment received · INV-0042</p><p class="strong mono">$2,400.00</p></header>
+          <div class="bar-split" role="img" aria-label="74 percent yours to spend, 26 percent set aside for tax">
+            <span class="part yours" style="--w: 74%"></span><span class="part tax" style="--w: 26%"></span>
+          </div>
+          <dl class="rows">
+            <div><dt><span class="key yours"></span>Yours to spend</dt><dd>$<span data-count-to="1776">1,776</span>.00</dd></div>
+            <div><dt><span class="key tax"></span>Set aside for tax · 26%</dt><dd>$<span data-count-to="624">624</span>.00</dd></div>
+          </dl>
+          <p class="foot">Example. Ledgerly's estimates are a guide, not tax advice.</p>
+        </article>
+      </div>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section night on-night" data-quiet>
+    <div class="wrap">
+      <p class="statement" data-fill>Money in your account isn't all yours. Ledgerly shows you the part that is, every day of the year, so April is just another month.</p>
+    </div>
+  </section>
+
+  <section class="section" id="trust" data-stage="4">
+    <div class="wrap split">
+      <div class="stack">
+        <p class="eyebrow">04 · Trust</p>
+        <h2>Built to be trusted with your books.</h2>
+        <p class="lead">Your income, your clients and your tax are private. We treat them that way, and we keep the door open if you ever want to leave.</p>
+        <dl class="promises">
+          <div><dt>Read-only bank connections</dt><dd>Ledgerly can see transactions. It can never move money out of your accounts.</dd></div>
+          <div><dt>Encrypted end to end</dt><dd>Data is encrypted in transit and at rest, and protected by two-factor sign-in.</dd></div>
+          <div><dt>Your data stays yours</dt><dd>Export every invoice, receipt and report as CSV or PDF, whenever you like.</dd></div>
+          <div><dt>Never sold, never shared</dt><dd>We make money from subscriptions, not from your data.</dd></div>
+        </dl>
+      </div>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" data-quiet>
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="stack section-head center">
+        <p class="eyebrow">Pricing</p>
+        <h2>Simple, and free to start.</h2>
+        <p class="lead">Try everything free for 30 days. No card needed, and nothing changes until you choose a plan.</p>
+      </div>
+      <div class="plans">
+        <article class="card plan">
+          <p class="label">Starter</p>
+          <p class="price"><span class="mono">$0</span> / month</p>
+          <p>For your first clients.</p>
+          <ul class="ticks">
+            <li>Up to 3 clients</li>
+            <li>Unlimited receipts</li>
+            <li>Tax pot and estimates</li>
+          </ul>
+          <a class="button ghost" href="#pricing">Start with Starter</a>
+        </article>
+        <article class="card plan featured">
+          <p class="label">Pro</p>
+          <p class="price"><span class="mono">$12</span> / month</p>
+          <p>For a full-time freelance business.</p>
+          <ul class="ticks">
+            <li>Unlimited clients and invoices</li>
+            <li>Card and bank payments on invoices</li>
+            <li>Automatic transfers to your tax pot</li>
+            <li>Quarterly reports for your accountant</li>
+          </ul>
+          <a class="button" href="#pricing">Start 30-day free trial<span class="knob" aria-hidden="true">→</span></a>
+        </article>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>How does Ledgerly work out what to set aside?</summary>
+          <p>It looks at your income and deductible expenses so far this year and estimates your federal, state and self-employment tax. You can always adjust the rate yourself. It's a guide, not tax advice.</p>
+        </details>
+        <details>
+          <summary>Can Ledgerly move money out of my bank?</summary>
+          <p>No. Bank connections are read-only. Automatic transfers to a tax pot only happen between accounts you choose, and you can switch them off at any time.</p>
+        </details>
+        <details>
+          <summary>What happens to my data if I leave?</summary>
+          <p>Export everything as CSV or PDF first, then close your account and we delete your data.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" data-quiet>
+  <div class="wrap footer-row">
+    <p>© 2026 Ledgerly. Estimates are a guide, not tax advice.</p>
+    <nav aria-label="Footer"><a href="#trust">Security</a><a href="#pricing">Pricing</a><a href="mailto:hello@ledgerly.example">Contact</a></nav>
+  </div>
+  <p class="footer-mark" data-glow aria-hidden="true">Ledgerly</p>
+</footer>
+
+<div class="scene-layer" aria-hidden="true">
+  <svg class="standin" viewBox="0 0 520 420">
+    <ellipse cx="260" cy="356" rx="230" ry="16" class="s-shadow"/>
+    <g class="s-col"><rect x="40" y="290" width="110" height="60" rx="3"/><path d="M40 300h110M40 312h110M40 324h110M40 336h110"/></g>
+    <g class="s-col"><rect x="190" y="150" width="140" height="200" rx="3"/><path d="M190 165h140M190 182h140M190 199h140M190 216h140M190 233h140M190 250h140M190 267h140M190 284h140M190 301h140M190 318h140M190 335h140"/></g>
+    <g class="s-col s-tax"><rect x="370" y="270" width="110" height="80" rx="3"/><path d="M370 286h110M370 302h110M370 318h110M370 334h110"/></g>
+    <path class="s-rule" d="M24 366h472M24 373h472"/>
+    <text x="95" y="398" class="s-label">Expenses</text>
+    <text x="260" y="398" class="s-label">Yours</text>
+    <text x="425" y="398" class="s-label">Tax pot</text>
+  </svg>
+</div>
+</body>
+</html>

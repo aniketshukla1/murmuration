@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Murmuration · websites that move like what they're about</title>
+<meta name="description" content="An open agent skill that reads your subject, finds its verb and builds a site whose motion comes from it: real 3D built in code, in plain HTML, CSS and JS. Works in Claude Code, Codex, Cursor, GitHub Copilot, Gemini CLI and any agent that reads SKILL.md.">
+<meta name="theme-color" content="#d9b49c">
+<meta property="og:title" content="Murmuration">
+<meta property="og:description" content="Websites that move like what they're about. An open agent skill for Claude Code, Codex, Cursor, Copilot, Gemini CLI and more.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="media/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/fraunces-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="site.js" defer></script>
+<script type="module" src="flock.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" data-top>
+  <div class="top-in">
+    <a class="brand" href="#top" aria-label="Murmuration, back to top">
+      <svg class="mark" viewBox="0 0 40 24" aria-hidden="true"><use href="#mark"/></svg>
+      <span>Murmuration</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#examples">Examples</a>
+      <a href="#how">How it works</a>
+      <a href="#techniques">Techniques</a>
+      <a href="#install">Install</a>
+    </nav>
+    <a class="pill" href="https://github.com/aniketshukla1/murmuration">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.22.48-2.69-1.07-2.69-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top" data-flock="free" data-flock-anchor=".hero-flock">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <p class="eyebrow">An open agent skill · for any coding agent</p>
+    <h1 class="display" aria-label="Websites that move like what they're about.">
+      <span class="line" aria-hidden="true"><span>Websites that move</span></span>
+      <span class="line" aria-hidden="true"><span>like what they're <em>about.</em></span></span>
+    </h1>
+    <p class="lede">Murmuration reads your subject, finds its verb and builds the site in plain HTML, CSS and JS, with real 3D made in code. A roastery roasts. A ledger balances. A tide goes out.</p>
+    <div class="actions">
+      <a class="btn btn-ink" href="#install"><span>Install the skill</span><i aria-hidden="true">→</i></a>
+      <a class="btn btn-line" href="#examples">See six sites it built</a>
+    </div>
+  </div>
+  <div class="hero-flock" aria-hidden="true">
+    <img class="still" src="media/flock.svg" alt="" width="1200" height="560">
+  </div>
+  <ul class="readouts" aria-label="About this page">
+    <li><b data-birds>4,096</b> starlings, one flock</li>
+    <li><b>0</b> frameworks, <b>0</b> build steps</li>
+  </ul>
+</section>
+
+<section class="why" id="why" data-flock="free" data-flock-anchor=".why-flock">
+  <div class="wrap">
+    <p class="eyebrow">The problem</p>
+    <h2 class="h2">Ask an AI for an animated landing page and you get the same page every time.</h2>
+    <ul class="cliches" aria-label="What those pages always contain">
+      <li><s>a gradient blob</s></li>
+      <li><s>drifting particles</s></li>
+      <li><s>a globe of dots</s></li>
+      <li><s>cards that tilt</s></li>
+      <li><s>a glowing orb</s></li>
+      <li><s>a marquee of logos</s></li>
+      <li><s>steam off a cup</s></li>
+      <li><s>equaliser bars</s></li>
+    </ul>
+    <p class="statement" data-fill>Murmuration starts from the subject instead. It finds what the subject does, the way a roaster watches a curve, a ledger balances, a frame goes up and a tide goes out, and builds the one motion only that subject could have.</p>
+  </div>
+  <div class="why-flock" aria-hidden="true"></div>
+</section>
+
+<section class="how" id="how" data-flock="free" data-flock-anchor=".how-flock">
+  <div class="wrap how-grid">
+    <div class="how-head">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h2">From one sentence to a site that moves.</h2>
+      <p class="sub">Six steps, in order. You can stop it at any of them.</p>
+      <div class="how-flock" aria-hidden="true"></div>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><div><h3>Reads your project</h3><p>The product, the brand's colours and fonts, the photos, renders or models that exist, the stack.</p></div></li>
+      <li><span class="n">02</span><div><h3>Interviews you</h3><p>Two short rounds: what the first five seconds should feel like, then what is real. "You decide" is always an answer, and "just build it" skips the questions.</p></div></li>
+      <li><span class="n">03</span><div><h3>Offers directions</h3><p>Two or three that genuinely differ, each drawn from your subject. You pick.</p></div></li>
+      <li><span class="n">04</span><div><h3>Writes <code>MOTION.md</code></h3><p>The signature, the verb it comes from, an intensity from 1 to 10, the timing tokens and what the page looks like with the motion removed.</p></div></li>
+      <li><span class="n">05</span><div><h3>Builds it</h3><p>Real content first, then 3D built in code, with a drawn stand-in where WebGL is missing and finished stills under reduced motion.</p></div></li>
+      <li><span class="n">06</span><div><h3>Checks it with its own eyes</h3><p>Screenshots in both themes, a short laptop window, a phone, no WebGL, reduced motion and a real GPU browser.</p></div></li>
+    </ol>
+    <figure class="brief" aria-label="An excerpt from a real MOTION.md">
+      <figcaption><span class="file">MOTION.md</span><span class="who">Ledgerly, written by the skill</span></figcaption>
+      <dl>
+        <div><dt>Signature</dt><dd>A 3D desk built in code. As you scroll, the receipts sort themselves into piles and the top quarter of the payment lifts into its own amber tax pot.</dd></div>
+        <div><dt>Verb</dt><dd><em>Set aside, sort, balance.</em></dd></div>
+        <div><dt>Intensity</dt><dd>3 of 10. Money software has to feel calm and exact.</dd></div>
+        <div><dt>Avoided</dt><dd>Floating gold coins, rising-arrow charts, glowing fintech gradients.</dd></div>
+        <div><dt>At rest</dt><dd>Every section complete as text and a working card; a drawn SVG of three balanced columns without WebGL.</dd></div>
+      </dl>
+    </figure>
+  </div>
+</section>
+
+<section class="examples" id="examples">
+  <div class="wrap ex-intro">
+    <p class="eyebrow">Same skill, six worlds</p>
+    <h2 class="h2">Six one-line briefs.<br>Six ways of moving.</h2>
+    <p class="sub">Each site was built by the skill in a fresh session from the prompt shown, told to decide everything itself. None of them chose the same motion, and none of them reached for particles. The same <code>SKILL.md</code> runs in any agent. Each site was then opened in a real browser and fixed where it broke, which is the skill's last step.</p>
+  </div>
+
+  <article class="ex" id="ex-coffee" data-flock="drum" data-flock-anchor=".ex-stage">
+    <div class="wrap ex-grid">
+      <div class="ex-text">
+        <p class="ex-kicker"><span>01</span>Coffee roastery</p>
+        <h3 class="ex-name">Ember &amp; Ash</h3>
+        <figure class="prompt">
+          <figcaption>The prompt</figcaption>
+          <p data-type>Make a landing page for Ember &amp; Ash, a small-batch coffee roastery that roasts every Tuesday and ships the same week. Plain HTML, CSS and JS in ./site. It should feel premium and animated, with light and dark mode. Don't ask me questions first: make the decisions yourself and tell me what you chose.</p>
+        </figure>
+        <dl class="chose">
+          <div><dt>It built</dt><dd>A roasting drum, made in code, that turns as you scroll. The beans inside go from green to brown, crack, and pour out into the cooling tray.</dd></div>
+          <div><dt>Its verb</dt><dd>“The roastery's verb is <em>roast</em>: colour changing with heat over about eleven minutes, once a week.”</dd></div>
+          <div><dt>It refused</dt><dd>Steam curling off a cup, beans floating in space.</dd></div>
+        </dl>
+        <p class="ex-links"><a class="go" href="examples/coffee-roastery/">Open the site <i aria-hidden="true">↗</i></a><a href="examples/coffee-roastery/MOTION.md">Read its brief</a></p>
+      </div>
+      <div class="ex-stage">
+        <p class="stage-cap" aria-hidden="true">The flock, as <b>a roasting drum</b></p>
+        <a class="shot" href="examples/coffee-roastery/" aria-label="Open the Ember &amp; Ash site">
+          <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>ember-and-ash</b></span>
+          <img src="media/coffee-roastery.webp" alt="The Ember &amp; Ash site: a 3D roasting drum beside the headline." loading="lazy" width="1440" height="900">
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <article class="ex flip" id="ex-ledgerly" data-flock="ledger" data-flock-anchor=".ex-stage">
+    <div class="wrap ex-grid">
+      <div class="ex-text">
+        <p class="ex-kicker"><span>02</span>Accounting app</p>
+        <h3 class="ex-name">Ledgerly</h3>
+        <figure class="prompt">
+          <figcaption>The prompt</figcaption>
+          <p data-type>Create the launch page for Ledgerly, an accounting app that helps freelancers send invoices, track expenses and set money aside for tax. Plain HTML, CSS and JS in ./site. Animated, but it has to feel trustworthy. Don't ask me questions first: make the decisions yourself and tell me what you chose.</p>
+        </figure>
+        <dl class="chose">
+          <div><dt>It built</dt><dd>A 3D desk of paper. The invoice stands up to be read, the receipts sort into three piles, and the tax share of the payment lifts into its own amber pot until the books balance.</dd></div>
+          <div><dt>Its verb</dt><dd>“The verbs of bookkeeping are <em>set aside</em>, <em>sort</em> and <em>balance</em>.”</dd></div>
+          <div><dt>It refused</dt><dd>Floating gold coins, rising-arrow charts, glowing fintech gradients.</dd></div>
+        </dl>
+        <p class="ex-links"><a class="go" href="examples/accounting-app/">Open the site <i aria-hidden="true">↗</i></a><a href="examples/accounting-app/MOTION.md">Read its brief</a></p>
+      </div>
+      <div class="ex-stage">
+        <p class="stage-cap" aria-hidden="true">The flock, as <b>a stack and its tax pot</b></p>
+        <a class="shot" href="examples/accounting-app/" aria-label="Open the Ledgerly site">
+          <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>ledgerly</b></span>
+          <img src="media/accounting-app.webp" alt="The Ledgerly site: a 3D stack of paper slips and an invoice on a desk." loading="lazy" width="1440" height="900">
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <article class="ex" id="ex-brenner" data-flock="frame" data-flock-anchor=".ex-stage">
+    <div class="wrap ex-grid">
+      <div class="ex-text">
+        <p class="ex-kicker"><span>03</span>Architecture studio</p>
+        <h3 class="ex-name">Atelier Brenner</h3>
+        <figure class="prompt">
+          <figcaption>The prompt</figcaption>
+          <p data-type>Design a site for Atelier Brenner, a five-person architecture studio that builds timber houses and small public buildings. Plain HTML, CSS and JS in ./site, with tasteful motion. Don't ask me questions first: make the decisions yourself and tell me what you chose.</p>
+        </figure>
+        <dl class="chose">
+          <div><dt>It built</dt><dd>A timber house that goes up as you scroll: the plinth, the posts, the joists, the rafters with a fir on the ridge, then the cladding as the sun moves to dusk.</dd></div>
+          <div><dt>Its verb</dt><dd>“A timber frame is <em>raised</em>, piece by piece, in a single day.”</dd></div>
+          <div><dt>It refused</dt><dd>A full-bleed slider of glossy renders on black.</dd></div>
+        </dl>
+        <p class="ex-links"><a class="go" href="examples/architecture-studio/">Open the site <i aria-hidden="true">↗</i></a><a href="examples/architecture-studio/MOTION.md">Read its brief</a></p>
+      </div>
+      <div class="ex-stage">
+        <p class="stage-cap" aria-hidden="true">The flock, as <b>a timber frame</b></p>
+        <a class="shot" href="examples/architecture-studio/" aria-label="Open the Atelier Brenner site">
+          <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>atelier-brenner</b></span>
+          <img src="media/architecture-studio.webp" alt="The Atelier Brenner site: a timber house frame drawn beside the headline." loading="lazy" width="1440" height="900">
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <article class="ex flip" id="ex-lowtide" data-flock="wave" data-flock-anchor=".ex-stage">
+    <div class="wrap ex-grid">
+      <div class="ex-text">
+        <p class="ex-kicker"><span>04</span>Music festival</p>
+        <h3 class="ex-name">Lowtide</h3>
+        <figure class="prompt">
+          <figcaption>The prompt</figcaption>
+          <p data-type>Make a website for Lowtide, a three-day electronic music festival on a beach in late August. Plain HTML, CSS and JS in ./site. Bold, loud and animated. Don't ask me questions first: make the decisions yourself and tell me what you chose.</p>
+        </figure>
+        <dl class="chose">
+          <div><dt>It built</dt><dd>A beach drawn in one shader. The sun sets, the tide goes out, a sandbar rises carrying the stage, and the bass sends rings across the water at 124 beats a minute.</dd></div>
+          <div><dt>Its verb</dt><dd>“The tide goes out. The name is the mechanic: the stage only exists at low tide.”</dd></div>
+          <div><dt>It refused</dt><dd>Equaliser bars, a synthwave grid sun, crowds with their hands up.</dd></div>
+        </dl>
+        <p class="ex-links"><a class="go" href="examples/music-festival/">Open the site <i aria-hidden="true">↗</i></a><a href="examples/music-festival/MOTION.md">Read its brief</a></p>
+      </div>
+      <div class="ex-stage">
+        <p class="stage-cap" aria-hidden="true">The flock, as <b>a breaking wave</b></p>
+        <a class="shot" href="examples/music-festival/" aria-label="Open the Lowtide site">
+          <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>lowtide</b></span>
+          <img src="media/music-festival.webp" alt="The Lowtide site: a beach at sunset with the festival name set over the sea." loading="lazy" width="1440" height="900">
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <article class="ex" id="ex-sprout" data-flock="sprout" data-flock-anchor=".ex-stage">
+    <div class="wrap ex-grid">
+      <div class="ex-text">
+        <p class="ex-kicker"><span>05</span>Children's science museum</p>
+        <h3 class="ex-name">Sprout Lab</h3>
+        <figure class="prompt">
+          <figcaption>The prompt</figcaption>
+          <p data-type>Build a website for Sprout Lab, a hands-on science museum for children aged 5 to 12. Plain HTML, CSS and JS in ./site. Playful and animated, and parents need to find opening times and tickets easily. Don't ask me questions first: make the decisions yourself and tell me what you chose.</p>
+        </figure>
+        <dl class="chose">
+          <div><dt>It built</dt><dd>A seedling in a lab beaker that sprouts as you read. One leaf unfurls for each zone of the museum, in that zone's colour, and a flower opens at Tickets.</dd></div>
+          <div><dt>Its verb</dt><dd>“The museum's name is a verb, <em>sprout</em>, and so is its promise: curiosity grows by doing.”</dd></div>
+          <div><dt>It refused</dt><dd>Cartoon mascots, rainbow chaos, a bubbling green flask.</dd></div>
+        </dl>
+        <p class="ex-links"><a class="go" href="examples/kids-science-museum/">Open the site <i aria-hidden="true">↗</i></a><a href="examples/kids-science-museum/MOTION.md">Read its brief</a></p>
+      </div>
+      <div class="ex-stage">
+        <p class="stage-cap" aria-hidden="true">The flock, as <b>a seedling in a beaker</b></p>
+        <a class="shot" href="examples/kids-science-museum/" aria-label="Open the Sprout Lab site">
+          <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>sprout-lab</b></span>
+          <img src="media/kids-science-museum.webp" alt="The Sprout Lab site: a 3D beaker with a sprouting seedling beside the opening times." loading="lazy" width="1440" height="900">
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <article class="ex flip" id="ex-northline" data-flock="ship" data-flock-anchor=".ex-stage">
+    <div class="wrap ex-grid">
+      <div class="ex-text">
+        <p class="ex-kicker"><span>06</span>Freight forwarder</p>
+        <h3 class="ex-name">Northline</h3>
+        <figure class="prompt">
+          <figcaption>The prompt</figcaption>
+          <p data-type>Build a homepage for Northline, an ocean and air freight forwarder that moves containers between ports across Asia and Europe. Put it in ./site as plain HTML, CSS and JS. Make it cinematic, like an Awwwards site of the day. Don't ask me questions first: make the decisions yourself and tell me what you chose.</p>
+        </figure>
+        <dl class="chose">
+          <div><dt>It built</dt><dd>One container ship on a simulated ocean. Scroll sails it from Shanghai to Rotterdam, loaded at dawn, at sea through the night, arriving under the cranes at the next dawn.</dd></div>
+          <div><dt>Its verb</dt><dd>“The forwarder's verbs are <em>load, sail, clear, arrive</em>.”</dd></div>
+          <div><dt>It refused</dt><dd>A blue globe of dots with glowing arcs.</dd></div>
+        </dl>
+        <p class="ex-links"><a class="go" href="examples/freight-forwarder/">Open the site <i aria-hidden="true">↗</i></a><a href="examples/freight-forwarder/MOTION.md">Read its brief</a></p>
+      </div>
+      <div class="ex-stage">
+        <p class="stage-cap" aria-hidden="true">The flock, as <b>a container ship</b></p>
+        <a class="shot" href="examples/freight-forwarder/" aria-label="Open the Northline site">
+          <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>northline</b></span>
+          <img src="media/freight-forwarder.webp" alt="The Northline site: a 3D container ship loading at a quay at dawn." loading="lazy" width="1440" height="900">
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <div class="wrap vesper">
+    <p>And the first demo, <a href="vesper/">Vesper</a>: a made-up night-train company, told with one particle cloud that becomes a train, a route, a cabin window, snow over a pass and the sun rising over the sea.</p>
+  </div>
+</section>
+
+<section class="techniques" id="techniques" data-flock="free" data-flock-anchor=".tech-flock">
+  <div class="wrap">
+    <div class="tech-head">
+      <p class="eyebrow">The catalogue</p>
+      <h2 class="h2">Nineteen signatures. Particles are one of them.</h2>
+      <p class="sub">The skill picks one per page from your subject and the assets you have, then two to four quiet supporting moves. Each technique has a recipe: what it fits, how to build it without a framework, what it costs and what the page shows at rest.</p>
+    </div>
+    <div class="families">
+      <section aria-labelledby="f1"><h3 id="f1">Scenes and objects</h3><ul>
+        <li>A 3D object, turning or relit</li><li>A 3D world or flythrough</li><li>A particle cloud that re-forms</li><li>A globe or map with routes</li><li>An image sequence scrubbed by scroll</li><li>Video</li></ul></section>
+      <section aria-labelledby="f2"><h3 id="f2">Surfaces and fields</h3><ul>
+        <li>A shader field: mesh, aurora, liquid metal, dither, halftone, ASCII</li><li>A generative canvas</li><li>Physics</li></ul></section>
+      <section aria-labelledby="f3"><h3 id="f3">Drawing and type</h3><ul>
+        <li>Line drawing and mask reveals</li><li>Type as the image</li><li>Illustration in motion</li></ul></section>
+      <section aria-labelledby="f4"><h3 id="f4">Space and structure</h3><ul>
+        <li>Depth layers</li><li>Pinned chapters</li><li>Image transitions</li></ul></section>
+      <section aria-labelledby="f5"><h3 id="f5">Interaction and pacing</h3><ul>
+        <li>Cursor-led reveals</li><li>Page choreography</li><li>A mechanic: hold to advance, a small game</li><li>Data in motion</li></ul></section>
+    </div>
+  </div>
+  <div class="tech-flock" aria-hidden="true"></div>
+</section>
+
+<section class="install" id="install" data-flock="free" data-flock-anchor=".install-flock">
+  <div class="install-flock" aria-hidden="true"></div>
+  <div class="wrap install-in">
+    <p class="eyebrow">Install</p>
+    <h2 class="h2">Give your next site a verb.</h2>
+    <p class="sub install-sub">Murmuration is an open agent skill: one folder with a <code>SKILL.md</code>, read the same way by every agent that supports the standard.</p>
+    <div class="ways">
+      <div class="way way-main">
+        <h3>Any agent</h3>
+        <div class="code"><code>npx skills add aniketshukla1/murmuration</code><button type="button" data-copy="npx skills add aniketshukla1/murmuration">Copy</button></div>
+        <p class="small">It asks which agents to install into. Add <code>-a codex</code> (or <code>cursor</code>, <code>gemini-cli</code>, <code>github-copilot</code>) to pick one, and <code>-g</code> to install it for every project.</p>
+        <ul class="agents" aria-label="Agents it installs into">
+          <li>Claude Code</li><li>Codex</li><li>Cursor</li><li>GitHub Copilot</li><li>Gemini CLI</li><li>OpenCode</li><li>Windsurf</li><li>Goose</li><li>Amp</li><li>Kiro</li><li>Roo Code</li><li>Cline</li><li>Junie</li><li>Antigravity</li><li>OpenClaw</li><li class="more">and 60 more</li>
+        </ul>
+        <figure class="prompt prompt-cta">
+          <figcaption>Then ask your agent</figcaption>
+          <p>Make a website for my pottery studio, Kiln &amp; Clay. Make it 3D and mind-blowing.</p>
+        </figure>
+      </div>
+      <div class="way">
+        <h3>Claude Code plugin</h3>
+        <div class="code"><code>/plugin marketplace add aniketshukla1/murmuration</code><button type="button" data-copy="/plugin marketplace add aniketshukla1/murmuration">Copy</button></div>
+        <div class="code"><code>/plugin install murmuration@murmuration</code><button type="button" data-copy="/plugin install murmuration@murmuration">Copy</button></div>
+      </div>
+      <div class="way">
+        <h3>By hand</h3>
+        <p>Copy <code>skills/murmuration</code> into your agent's skills folder: <code>.agents/skills/</code> for Codex, Cursor, Copilot, Gemini CLI, OpenCode, Amp and Cline, or <code>.claude/skills/</code> for Claude Code. Chat apps that take skill uploads, such as claude.ai, take <code>murmuration-skill.zip</code> from the latest release.</p>
+        <a class="btn btn-line" href="https://github.com/aniketshukla1/murmuration/releases/latest">Latest release</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="word" aria-hidden="true">murmuration</p>
+    <div class="foot-cols">
+      <p>An open agent skill that designs a motion language for each website. MIT licence.</p>
+      <ul>
+        <li><a href="https://github.com/aniketshukla1/murmuration">Source on GitHub</a></li>
+        <li><a href="https://github.com/aniketshukla1/murmuration/tree/main/skills/murmuration">Read the skill</a></li>
+        <li><a href="https://github.com/aniketshukla1/murmuration/tree/main/evals">Run the evals</a></li>
+        <li><a href="vesper/">The Vesper demo</a></li>
+      </ul>
+      <p class="small">Made by Aniket Shukla. Every brand in the examples is made up. This page's flock is simulated on your GPU; its brief is in <a href="MOTION.md">MOTION.md</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 40 24">
+    <g fill="currentColor">
+      <path d="M2 15.5c1.1-.9 2.2-.9 3.1 0 .9-.9 2-.9 3.1 0-1 .1-2 .5-3.1 1.3-1.1-.8-2.1-1.2-3.1-1.3Z"/>
+      <path d="M9.5 10.2c1.3-1 2.6-1 3.7 0 1.1-1 2.4-1 3.7 0-1.2.1-2.4.6-3.7 1.6-1.3-1-2.5-1.5-3.7-1.6Z"/>
+      <path d="M18 6.4c1.5-1.2 3-1.2 4.3 0 1.3-1.2 2.8-1.2 4.3 0-1.4.1-2.8.7-4.3 1.8-1.5-1.1-2.9-1.7-4.3-1.8Z"/>
+      <path d="M17.2 14.6c1-.8 2-.8 2.8 0 .8-.8 1.8-.8 2.8 0-.9.1-1.8.4-2.8 1.1-1-.7-1.9-1-2.8-1.1Z"/>
+      <path d="M27.4 11.8c1.2-1 2.4-1 3.5 0 1-1 2.2-1 3.5 0-1.1.1-2.3.6-3.5 1.5-1.2-.9-2.3-1.4-3.5-1.5Z"/>
+      <path d="M31 4.2c.9-.7 1.8-.7 2.6 0 .8-.7 1.6-.7 2.5 0-.8.1-1.7.4-2.5 1-.9-.6-1.7-.9-2.6-1Z"/>
+      <path d="M25 19c.8-.6 1.6-.6 2.3 0 .7-.6 1.5-.6 2.2 0-.7.1-1.5.4-2.2.9-.8-.5-1.5-.8-2.3-.9Z"/>
+    </g>
+  </symbol>
+</svg>
+</body>
+</html>

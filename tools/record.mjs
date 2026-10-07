@@ -21,8 +21,8 @@ if (!url || !outDir) {
 const fps = Number(fpsArg);
 
 // The tour: each stop is a selector (or "top"), an offset in px, how long the move there takes
-// and how long to hold, in seconds.
-const TOUR = [
+// and how long to hold, in seconds. TOUR='[["top",0,0,2],["#next",0,1.4,1.5]]' replaces the default (Vesper's).
+const TOUR = process.env.TOUR ? JSON.parse(process.env.TOUR) : [
   ['top', 110, 0, 2.4],
   ['#depart', 60, 1.5, 1.4],
   ['#route', 0, 1.4, 1.5],

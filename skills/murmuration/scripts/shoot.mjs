@@ -4,6 +4,7 @@
 // Finds Chrome, Chromium, Edge or Brave on macOS, Linux and Windows; set CHROME_PATH to use another.
 // EXTRA adds Chrome flags (for example "--disable-3d-apis", or "--no-sandbox" in a container).
 // DEBUG=1, with ?debug-scene in the URL, prints the scene's pair, target, frames and sections at each stop.
+// WAIT=5000 waits longer at each stop (ms; default 2200), for scenes that settle slowly in software rendering.
 import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -101,7 +102,7 @@ for (const stop of stops.split(',')) {
     y = await evaluate(`(() => { const el = document.querySelector(${JSON.stringify(selector)}); return el ? Math.round(el.getBoundingClientRect().top + scrollY) : 0; })()`) + Number(offset);
   }
   await evaluate(`document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, ${y}); 1`);
-  await sleep(2200);
+  await sleep(Number(process.env.WAIT) || 2200);
   const shot = await send('Page.captureScreenshot', { format: 'jpeg', quality: 78 });
   const name = `${outDir}/${scheme}-${w}-${stop.replace(/[^a-z0-9+-]/gi, '')}.jpg`;
   writeFileSync(name, Buffer.from(shot.result.data, 'base64'));

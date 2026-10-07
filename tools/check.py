@@ -1,5 +1,5 @@
-# Checks the skill's frontmatter and the plugin manifests: what `claude plugin validate`
-# checks, minus the CLI, so CI needs nothing installed. Run: python3 tools/check.py
+# Checks the skill against the Agent Skills spec and the Claude plugin manifests, without any CLI,
+# so CI needs nothing installed. Run: python3 tools/check.py
 import json, pathlib, re, sys
 
 root = pathlib.Path(__file__).resolve().parent.parent
@@ -12,6 +12,12 @@ if not name or name.group(1).strip() != 'murmuration': errors.append('SKILL.md n
 if not desc: errors.append('SKILL.md has no description')
 elif len(desc.group(1)) > 1024: errors.append(f'description is {len(desc.group(1))} chars (max 1024)')
 elif ': ' in desc.group(1): errors.append('description has an unquoted ": " (invalid YAML)')
+# The Agent Skills spec (agentskills.io), which every agent that reads SKILL.md follows.
+if name and not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', name.group(1).strip()) or name and len(name.group(1).strip()) > 64:
+    errors.append('name must be 1-64 lowercase letters, digits and single hyphens')
+compat = re.search(r'^compatibility: (.+)$', fm, re.M)
+if compat and len(compat.group(1)) > 500: errors.append(f'compatibility is {len(compat.group(1))} chars (max 500)')
+if compat and ': ' in compat.group(1): errors.append('compatibility has an unquoted ": " (invalid YAML)')
 for ref in sorted(set(re.findall(r'`((?:references|templates|scripts)/[\w.-]+)`', skill))):
     if not (root / 'skills/murmuration' / ref).exists(): errors.append(f'SKILL.md names a missing file: {ref}')
 plugin = json.loads((root / '.claude-plugin/plugin.json').read_text())

@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sprout Lab: hands-on science museum for ages 5 to 12</title>
+<meta name="description" content="Sprout Lab is a hands-on science museum for children aged 5 to 12. Four zones, 120+ things to touch, free shows every day. Opening times, tickets and visitor info.">
+<meta name="theme-color" content="#dff3e4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%2323a45f'/%3E%3Cpath d='M20 31V19' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M20 22c-6 0-8-4-8-7 5 0 8 3 8 7zM20 20c0-5 3-8 8-8 0 5-3 8-8 8z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>try{var t=localStorage.getItem('sprout-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="sprout.js"></script>
+</head>
+<body>
+<a class="skip" href="#visit">Skip to opening times</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="Sprout Lab home">
+        <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path class="mark-flask" d="M15 5h10M17.5 5v10L8.6 30.6A4.3 4.3 0 0 0 12.3 37h15.4a4.3 4.3 0 0 0 3.7-6.4L22.5 15V5"/>
+          <path class="mark-stem" d="M20 33v-9"/>
+          <path class="mark-leaf" d="M20 27c-4.6 0-6.4-2.8-6.4-5.4 3.8 0 6.4 2.2 6.4 5.4zM20 25.5c0-3.8 2.4-6.4 6-6.4 0 3.6-2.4 6.4-6 6.4z"/>
+        </svg>
+        <span>Sprout Lab</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#explore">Explore</a>
+        <a href="#shows">Shows</a>
+        <a href="#visit">Opening times</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="status" href="#visit" data-status>
+        <span class="status-dot" aria-hidden="true"></span>
+        <span><b data-status-head>Open Tue–Sun</b> <span class="status-tail" data-status-tail>from 9:30am</span></span>
+      </a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z"/></svg>
+      </button>
+      <a class="button button-small" href="#tickets">Tickets</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero: morning -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Hands-on science museum · ages 5 to 12</p>
+        <h1><span class="w" style="--i:0">Poke</span> <span class="w" style="--i:1">it.</span> <span class="w" style="--i:2">Pour</span> <span class="w" style="--i:3">it.</span> <span class="w accent-word" style="--i:4">Find</span> <span class="w accent-word" style="--i:5">out.</span></h1>
+        <p class="lead">Four zones and more than 120 things to touch, test and take apart, with free science shows every day. There isn't a single "please don't touch" sign in the building.</p>
+        <div class="actions">
+          <a class="button" href="#tickets">Buy tickets<span class="knob" aria-hidden="true">→</span></a>
+          <a class="button button-ghost" href="#visit">Opening times</a>
+        </div>
+
+        <dl class="quick card">
+          <div>
+            <dt>Today</dt>
+            <dd><b data-today-hours>Tue–Fri 9:30am–4:30pm</b><span data-today-note>Weekends until 5:30pm</span></dd>
+          </div>
+          <div>
+            <dt>Tickets</dt>
+            <dd><b>Children £9 · Adults £11</b><span>Under 5s free · Family £34</span></dd>
+          </div>
+          <div>
+            <dt>Find us</dt>
+            <dd><b>14 Greenhouse Lane</b><span>Riverside · free buggy park</span></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="stage" data-plant-anchor>
+        <!-- Drawn stand-in for the 3D sprout: shown without WebGL, hidden once the scene runs -->
+        <svg class="plant-still" viewBox="0 0 300 520" role="img" aria-label="A seedling with four coloured leaves and a red flower, growing in a lab beaker">
+          <ellipse cx="150" cy="500" rx="120" ry="14" fill="rgba(29,58,50,.14)"/>
+          <rect x="44" y="470" width="212" height="24" rx="12" fill="#d9a066"/>
+          <path d="M150 300 C 170 250, 120 200, 160 140 S 140 70, 150 40" fill="none" stroke="#3da35a" stroke-width="10" stroke-linecap="round"/>
+          <path d="M152 286c-30-22-62-18-82-6 22 16 56 22 82 6z" fill="#7ccf6b"/>
+          <path d="M152 286c30-24 62-20 82-8-22 16-56 22-82 8z" fill="#7ccf6b"/>
+          <path d="M146 236c38-26 84-22 112-6-30 22-78 28-112 6z" fill="#2d8cff"/>
+          <path d="M146 196c-38-26-84-22-112-6 30 22 78 28 112 6z" fill="#f2b100"/>
+          <path d="M156 150c36-24 80-20 106-4-28 20-74 26-106 4z" fill="#7d5cff"/>
+          <path d="M152 108c-34-22-74-18-98-4 26 18 68 24 98 4z" fill="#23a45f"/>
+          <g transform="translate(150 40)">
+            <ellipse rx="34" ry="13" transform="rotate(-20)" fill="#ff6f5b"/>
+            <ellipse rx="34" ry="13" transform="rotate(30)" fill="#ff6f5b"/>
+            <ellipse rx="34" ry="13" transform="rotate(85)" fill="#ff8a6f"/>
+            <circle r="13" fill="#ffc93c"/>
+          </g>
+          <path d="M70 300h160v158a14 14 0 0 1-14 14H84a14 14 0 0 1-14-14z" fill="rgba(110,195,255,.28)"/>
+          <rect x="72" y="420" width="156" height="50" rx="10" fill="#8a6a4f"/>
+          <path d="M64 290h172M70 290v168a14 14 0 0 0 14 14h132a14 14 0 0 0 14-14V290" fill="none" stroke="rgba(29,58,50,.45)" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M84 340h22M84 370h14M84 400h22" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <button class="fizz" type="button" data-fizz>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="16" r="4"/><circle cx="16" cy="10" r="3"/><circle cx="11" cy="5" r="2"/></svg>
+          Make it fizz
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore: the four zones, one leaf each -->
+  <section id="explore" class="section sky-cream">
+    <div class="wrap">
+      <div class="col">
+        <div class="section-head">
+          <p class="eyebrow">Explore</p>
+          <h2>Four zones. Every one of them is touchable.</h2>
+          <p class="lead">Each zone is built around one big question, with exhibits made for small hands and grown-ups who want a go too.</p>
+        </div>
+
+        <ul class="facts" role="list">
+          <li><b>4</b><span>zones</span></li>
+          <li><b>120+</b><span>hands-on exhibits</span></li>
+          <li><b>2–3 hrs</b><span>a typical visit</span></li>
+        </ul>
+
+        <div class="zones">
+          <article class="card zone reveal" style="--zone: var(--splash)" data-grow="0.40">
+            <svg class="zone-leaf" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 12C14-1 34-1 46 12 34 25 14 25 2 12z"/></svg>
+            <p class="zone-tag">Splash · water &amp; floating</p>
+            <h3>Why do some things sink?</h3>
+            <p>Build a dam on the 12-metre water table, race boats through the locks and crank water uphill with an Archimedes screw.</p>
+            <p class="zone-meta">Waterproof aprons provided</p>
+          </article>
+          <article class="card zone reveal" style="--zone: var(--spark)" data-grow="0.55">
+            <svg class="zone-leaf" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 12C14-1 34-1 46 12 34 25 14 25 2 12z"/></svg>
+            <p class="zone-tag">Spark · electricity &amp; magnets</p>
+            <h3>Where does electricity come from?</h3>
+            <p>Light a bulb with your own two hands, make your hair stand on end and steer a ball bearing through the giant magnet maze.</p>
+            <p class="zone-meta">Static dome: ages 7+</p>
+          </article>
+          <article class="card zone reveal" style="--zone: var(--sky)" data-grow="0.70">
+            <svg class="zone-leaf" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 12C14-1 34-1 46 12 34 25 14 25 2 12z"/></svg>
+            <p class="zone-tag">Sky · air, flight &amp; space</p>
+            <h3>How high can a paper rocket go?</h3>
+            <p>Fire air rockets eight metres up, ride a hover-cushion across the floor and lie back under the star dome.</p>
+            <p class="zone-meta">Star dome every 30 minutes</p>
+          </article>
+          <article class="card zone reveal" style="--zone: var(--grow)" data-grow="0.84">
+            <svg class="zone-leaf" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 12C14-1 34-1 46 12 34 25 14 25 2 12z"/></svg>
+            <p class="zone-tag">Grow · plants, bugs &amp; bodies</p>
+            <h3>What's alive in here?</h3>
+            <p>Watch our leafcutter ants at work, race your own heartbeat and plant a seed in a pot to take home.</p>
+            <p class="zone-meta">Seed pots included with every child ticket</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shows -->
+  <section id="shows" class="section sky-cream-butter" data-grow="0.95">
+    <div class="wrap">
+      <div class="col">
+        <div class="section-head">
+          <p class="eyebrow">Daily shows</p>
+          <h2>Bangs, bubbles and the odd rocket</h2>
+          <p class="lead">Every show is free with your ticket and there's nothing to book. Just turn up at the Big Bench ten minutes early to get a seat at the front.</p>
+        </div>
+        <ol class="card shows reveal" role="list">
+          <li><time>10:30am</time><div><b>Fizz, Pop, Whoosh</b><span>Kitchen chemistry with very big reactions · 20 min</span></div><span class="age">5+</span></li>
+          <li><time>12:00pm</time><div><b>The Air Cannon</b><span>Knock over a tower of cups from across the room · 15 min</span></div><span class="age">5+</span></li>
+          <li><time>2:00pm</time><div><b>Rocket Countdown</b><span>Design a rocket, then launch it outside · 25 min</span></div><span class="age">7+</span></li>
+          <li><time>3:30pm</time><div><b>Big Bubble Finale</b><span>Stand inside a bubble as tall as a grown-up · 15 min</span></div><span class="age">5+</span></li>
+        </ol>
+        <p class="small-note">Weekends and school holidays add an 11:15am Tiny Tinkerers session for younger siblings (ages 3–5).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit: opening times first -->
+  <section id="visit" class="section sky-butter" data-grow="1.0">
+    <div class="wrap">
+      <div class="col">
+        <div class="section-head">
+          <p class="eyebrow">Plan your visit</p>
+          <h2>Opening times</h2>
+          <p class="lead" data-status-sentence>We're open Tuesday to Sunday, plus Mondays in school holidays.</p>
+        </div>
+
+        <div class="card hours reveal">
+          <table>
+            <caption class="visually-hidden">Opening times by day</caption>
+            <tbody>
+              <tr data-day="2"><th scope="row">Tuesday</th><td>9:30am – 4:30pm</td></tr>
+              <tr data-day="3"><th scope="row">Wednesday</th><td>9:30am – 4:30pm</td></tr>
+              <tr data-day="4"><th scope="row">Thursday</th><td>9:30am – 4:30pm</td></tr>
+              <tr data-day="5"><th scope="row">Friday</th><td>9:30am – 4:30pm</td></tr>
+              <tr data-day="6"><th scope="row">Saturday</th><td>9:30am – 5:30pm</td></tr>
+              <tr data-day="0"><th scope="row">Sunday</th><td>9:30am – 5:30pm</td></tr>
+              <tr data-day="1" class="is-closed"><th scope="row">Monday</th><td>Closed <small>(open 9:30am – 5:30pm in school holidays)</small></td></tr>
+            </tbody>
+          </table>
+          <p class="hours-foot">Last entry is one hour before closing. We're closed on 24, 25 and 26 December.</p>
+        </div>
+
+        <div class="info">
+          <article class="card reveal">
+            <h3>Getting here</h3>
+            <p>14 Greenhouse Lane, Riverside. It's a 5-minute walk from Riverside station, and buses 4 and 17 stop outside. Our car park is pay-and-display and has 12 family bays.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Everyone's welcome</h3>
+            <p>The whole building is step-free, with lifts and a Changing Places toilet. You can borrow ear defenders and fidget kits at the desk. Quiet mornings run 9:30–11am on the first Sunday of every month.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Snacks &amp; buggies</h3>
+            <p>Café Sprout serves hot lunches and kids' lunchboxes. There's also a picnic room if you'd rather bring your own. Buggies can be left in the free, staffed buggy park.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tickets -->
+  <section id="tickets" class="section sky-butter-peach" data-grow="1.1">
+    <div class="wrap">
+      <div class="col">
+        <div class="section-head">
+          <p class="eyebrow">Tickets</p>
+          <h2>Book a day of finding out</h2>
+          <p class="lead">Pick a day and an arrival time, and you can stay until closing. Tickets bought online are guaranteed entry, and you can change the date for free up to 24 hours before.</p>
+        </div>
+
+        <ul class="prices" role="list">
+          <li class="card price reveal"><span>Child</span><b>£9</b><small>ages 5–12</small></li>
+          <li class="card price reveal"><span>Adult</span><b>£11</b><small>18+</small></li>
+          <li class="card price reveal"><span>Under 5s</span><b>Free</b><small>still need a ticket</small></li>
+          <li class="card price price-family reveal"><span>Family</span><b>£34</b><small>2 adults + 2 children</small></li>
+        </ul>
+        <p class="small-note">Carers go free with proof of need. Our <a href="#faq-members">annual family pass</a> costs £85 and pays for itself in three visits.</p>
+
+        <form class="card builder reveal" action="#tickets" data-builder>
+          <h3>Build your tickets</h3>
+          <div class="fields">
+            <div class="field">
+              <label for="visit-date">Day</label>
+              <input type="date" id="visit-date" name="date" required>
+            </div>
+            <div class="field">
+              <label for="visit-time">Arrival time</label>
+              <select id="visit-time" name="time">
+                <option>9:30am</option><option>10:30am</option><option>11:30am</option><option>12:30pm</option><option>1:30pm</option><option>2:30pm</option><option>3:30pm</option>
+              </select>
+            </div>
+          </div>
+          <p class="note" data-date-note hidden></p>
+
+          <fieldset class="counts">
+            <legend>Who's coming?</legend>
+            <div class="count" data-count="adult" data-price="11">
+              <span class="count-label"><b>Adults</b><small>£11 · 18+</small></span>
+              <button type="button" class="step" data-step="-1" aria-label="Remove an adult">−</button>
+              <output aria-live="polite" aria-label="Adults">2</output>
+              <button type="button" class="step" data-step="1" aria-label="Add an adult">+</button>
+            </div>
+            <div class="count" data-count="child" data-price="9">
+              <span class="count-label"><b>Children</b><small>£9 · ages 5–12</small></span>
+              <button type="button" class="step" data-step="-1" aria-label="Remove a child">−</button>
+              <output aria-live="polite" aria-label="Children">2</output>
+              <button type="button" class="step" data-step="1" aria-label="Add a child">+</button>
+            </div>
+            <div class="count" data-count="under5" data-price="0">
+              <span class="count-label"><b>Under 5s</b><small>Free</small></span>
+              <button type="button" class="step" data-step="-1" aria-label="Remove an under 5">−</button>
+              <output aria-live="polite" aria-label="Under 5s">0</output>
+              <button type="button" class="step" data-step="1" aria-label="Add an under 5">+</button>
+            </div>
+          </fieldset>
+
+          <div class="total">
+            <span>Total</span>
+            <strong data-total>£34</strong>
+          </div>
+          <p class="saver" data-saver>Family saver applied: you save £6.</p>
+          <p class="note" data-rule hidden></p>
+          <button class="button button-wide" type="submit">Continue to payment<span class="knob" aria-hidden="true">→</span></button>
+          <p class="result" data-result role="status"></p>
+        </form>
+        <p class="small-note">Prefer to talk to someone? Call us on <a href="tel:+441174960123">0117 496 0123</a>, 9am–5pm. Group and school bookings are on the same line.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section sky-peach-cream">
+    <div class="wrap">
+      <div class="col">
+        <div class="section-head">
+          <p class="eyebrow">Good to know</p>
+          <h2>Questions grown-ups ask</h2>
+        </div>
+        <div class="faq">
+          <details class="card">
+            <summary>Do we need to book?</summary>
+            <p>You don't have to, but we do recommend it. Weekends and school holidays often sell out by mid-morning, and online tickets are guaranteed entry. If there's space on the day you can buy tickets at the door.</p>
+          </details>
+          <details class="card">
+            <summary>What age is it best for?</summary>
+            <p>Everything is designed for ages 5 to 12. Under-5s are welcome and free, and they love the Splash zone and the Tiny Tinkerers sessions. A few exhibits have a minimum age, and it's marked on the sign.</p>
+          </details>
+          <details class="card">
+            <summary>Can children visit without an adult?</summary>
+            <p>No. Every child needs to be with an adult aged 18 or over, and one adult can bring up to four children.</p>
+          </details>
+          <details class="card">
+            <summary>Will my children get wet?</summary>
+            <p>Probably a bit! We lend waterproof aprons in Splash, and there are hand dryers at the zone exit. A spare pair of socks never hurts.</p>
+          </details>
+          <details class="card">
+            <summary>Can we leave and come back?</summary>
+            <p>Yes. Ask for a hand stamp at the exit and you can come back in any time on the same day.</p>
+          </details>
+          <details class="card" id="faq-members">
+            <summary>How does the annual family pass work?</summary>
+            <p>For £85 a year, two named adults and up to four children get unlimited visits, early entry at 9am on Saturdays and 10% off in the café.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-night">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-title">Sprout Lab</p>
+      <p>14 Greenhouse Lane, Riverside</p>
+      <p><a href="tel:+441174960123">0117 496 0123</a> · <a href="mailto:hello@sproutlab.example">hello@sproutlab.example</a></p>
+    </div>
+    <div>
+      <p class="footer-title">Open</p>
+      <p>Tue–Fri 9:30am–4:30pm</p>
+      <p>Sat–Sun 9:30am–5:30pm</p>
+      <p>Mondays in school holidays</p>
+    </div>
+    <div class="footer-cta">
+      <a class="button" href="#tickets">Buy tickets<span class="knob" aria-hidden="true">→</span></a>
+      <p class="small-note">Registered charity no. 0000000 · placeholder</p>
+    </div>
+  </div>
+  <p class="footer-mark" aria-hidden="true">sprout lab</p>
+</footer>
+<div class="scene-layer" aria-hidden="true"></div>
+</body>
+</html>

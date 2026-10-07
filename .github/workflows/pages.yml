@@ -19,8 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Assemble the site (the skill's website, the examples, and Vesper at /vesper/)
+        run: |
+          mkdir -p _site
+          cp -R site/. _site/
+          cp -R examples _site/examples
+          cp -R demo _site/vesper
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: demo
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
