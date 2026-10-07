@@ -228,6 +228,22 @@ const SHAPES = {
       ];
     },
   },
+  /* The logo: a serif capital M, thick and thin strokes, extruded into a slab of birds. */
+  mark: {
+    yaw: 0, tilt: 0.06, size: 1, sway: [0.62, 8], stray: 0.004,
+    parts: () => {
+      const stroke = (a, b, w) => () => {
+        const t = rnd(), nx = -(b[1] - a[1]), ny = b[0] - a[0], l = Math.hypot(nx, ny), o = R(-w / 2, w / 2);
+        return [a[0] + (b[0] - a[0]) * t + (nx / l) * o, a[1] + (b[1] - a[1]) * t + (ny / l) * o, R(-0.16, 0.16)];
+      };
+      const strokes = [
+        [[-0.92, -1], [-0.92, 1], 0.2], [[-0.92, 1], [0, -0.62], 0.075],
+        [[0, -0.62], [0.92, 1], 0.2], [[0.92, 1], [0.92, -1], 0.075],
+        [[-1.14, -1], [-0.7, -1], 0.06], [[0.72, -1], [1.14, -1], 0.06],
+      ];
+      return strokes.map(([a, b, w]) => [Math.hypot(b[0] - a[0], b[1] - a[1]) * w, stroke(a, b, w)]);
+    },
+  },
   /* The still stand-in for a free flock: a stretched, folded cloud with uneven density. */
   cloud: {
     yaw: 0, tilt: 0, size: 1,
@@ -316,7 +332,7 @@ void main() { gl_FragColor = texture2D(tSrc, vUv); }
 const VEL_FRAG = /* glsl */ `
 uniform sampler2D tPos, tVel, tA, tB;
 uniform mat4 uMA, uMB;
-uniform float uMix, uGather, uTime, uDt;
+uniform float uMix, uGather, uTime, uDt, uStray;
 uniform vec3 uCenter, uRad;
 uniform vec3 uFalcon;
 uniform float uFear;
@@ -327,7 +343,7 @@ void main() {
   vec3 p = P.xyz;
   vec3 v = texture2D(tVel, vUv).xyz;
   float r1 = hash(vUv * 1.37 + 0.11), r2 = hash(vUv * 2.91 + 0.2);
-  float g = uGather * step(0.06, r2);
+  float g = uGather * step(uStray, r2);
   vec3 desired = vec3(0.0);
   if (g < 0.999) {
     // Each bird keeps a loose place in the flock. The places drift on noise and turn
@@ -496,7 +512,7 @@ function start() {
       tPos: { value: null }, tVel: { value: null }, tA: { value: textureFor('cloud') }, tB: { value: textureFor('cloud') },
       uMA: { value: identity.clone() }, uMB: { value: identity.clone() }, uMix: { value: 1 }, uGather: { value: 0 },
       uTime: { value: 0 }, uDt: { value: 0.016 }, uCenter: { value: c0.clone() }, uRad: { value: new THREE.Vector3(6, 2.5, 2.5) },
-      uFalcon: { value: new THREE.Vector3(0, 999, 1.6) }, uFear: { value: 0 },
+      uFalcon: { value: new THREE.Vector3(0, 999, 1.6) }, uFear: { value: 0 }, uStray: { value: 0.06 },
     },
     vertexShader: SIM_VERT, fragmentShader: VEL_FRAG,
   });
@@ -525,10 +541,14 @@ function start() {
   geometry.setAttribute('position', new THREE.BufferAttribute(position, 3));
   geometry.setAttribute('ref', new THREE.BufferAttribute(refs, 2));
   geometry.setAttribute('wing', new THREE.BufferAttribute(wings, 1));
+  const css = getComputedStyle(root);
+  const hex = css.getPropertyValue('--flock-ink').trim().replace('#', '');
+  const cssInk = /^[0-9a-f]{6}$/i.test(hex) ? new THREE.Color(...[0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)) : null;
+  const cssSize = parseFloat(css.getPropertyValue('--flock-size')) || 0;
   const birdMat = new THREE.ShaderMaterial({
     uniforms: {
-      tPos: { value: null }, tVel: { value: null }, uTime: { value: 0 }, uSize: { value: small ? 0.085 : 0.105 },
-      uInk: { value: new THREE.Color(0.085, 0.078, 0.105) }, uAlpha: { value: 1 },
+      tPos: { value: null }, tVel: { value: null }, uTime: { value: 0 }, uSize: { value: cssSize || (small ? 0.085 : 0.105) },
+      uInk: { value: cssInk || new THREE.Color(0.085, 0.078, 0.105) }, uAlpha: { value: 1 },
     },
     vertexShader: BIRD_VERT, fragmentShader: BIRD_FRAG,
     transparent: true, depthWrite: false, depthTest: false, side: THREE.DoubleSide,
@@ -545,7 +565,8 @@ function start() {
 
   function shapeMatrix(name, place, time, out) {
     const sh = SHAPES[name];
-    const sway = reduce ? 0 : Math.sin(time * 0.21) * 0.26;
+    const [amp, period] = sh.sway || [0.26, 29.92];
+    const sway = reduce ? 0 : Math.sin((time * 2 * Math.PI) / period) * amp;
     rot.makeRotationY(sh.yaw + sway);
     tilt.makeRotationX(sh.tilt);
     scl.makeScale(place.s * sh.size, place.s * sh.size, place.s * sh.size);
@@ -610,6 +631,7 @@ function start() {
     const u = velMat.uniforms;
     u.uTime.value = time; u.uDt.value = dt; u.uMix.value = reduce ? 1 : state.mixing; u.uGather.value = state.gather;
     u.uCenter.value.copy(state.center); u.uRad.value.copy(state.rad);
+    u.uStray.value = SHAPES[state.shapeB].stray ?? 0.06; // the share of birds that never settle into the shape
     shapeMatrix(state.shapeB, state.place, time, u.uMB.value);
     if (reduce) {
       posMat.uniforms.uSnap.value = 1;

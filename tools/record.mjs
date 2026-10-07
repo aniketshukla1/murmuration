@@ -33,7 +33,9 @@ const TOUR = process.env.TOUR ? JSON.parse(process.env.TOUR) : [
   ['#terminus', 0, 1.3, 1.6],
   ['#book', 0, 1.3, 2.0],
 ];
-const PREROLL = 1.4; // seconds of virtual time before the first frame, so the scene has faded in
+const PREROLL = Number(process.env.PREROLL) || 1.4; // seconds of virtual time before the first frame, so the scene has faded in
+// ALPHA=1 records PNG frames on a transparent page background (for logos over any theme).
+const ALPHA = process.env.ALPHA === '1';
 
 const CLOCK = `(() => {
   let now = 0;
@@ -107,6 +109,7 @@ const evaluate = async (expression) => (await send('Runtime.evaluate', { express
 await send('Page.enable');
 await send('Runtime.enable');
 await send('Emulation.setDeviceMetricsOverride', { width: +w, height: +h, deviceScaleFactor: +scale, mobile: false });
+if (ALPHA) await send('Emulation.setDefaultBackgroundColorOverride', { color: { r: 0, g: 0, b: 0, a: 0 } });
 await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: scheme }] });
 await send('Page.addScriptToEvaluateOnNewDocument', { source: CLOCK });
 await send('Page.navigate', { url });
@@ -140,8 +143,8 @@ const started = Date.now();
 for (let f = 0; f < total; f++) {
   const t = f / fps;
   await evaluate(`window.scrollTo(0, ${scrollAt(t).toFixed(1)}); window.__advance(${1000 / fps}); 1`);
-  const shot = await send('Page.captureScreenshot', { format: 'jpeg', quality: 90 });
-  const file = `frame-${String(f).padStart(5, '0')}.jpg`;
+  const shot = await send('Page.captureScreenshot', ALPHA ? { format: 'png' } : { format: 'jpeg', quality: 90 });
+  const file = `frame-${String(f).padStart(5, '0')}.${ALPHA ? 'png' : 'jpg'}`;
   writeFileSync(join(outDir, file), Buffer.from(shot.result.data, 'base64'));
   manifest.push([file, +t.toFixed(4)]);
   if (f % 60 === 0) console.log(`frame ${f}/${total} (${((Date.now() - started) / 1000).toFixed(0)} s)`);

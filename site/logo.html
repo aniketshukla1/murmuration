@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Murmuration logo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- The animated logo: the flock forms a serif M that turns in 3D, a falcon cuts through it every
+     eight seconds and the birds close again. Recorded with tools/record.mjs (ALPHA=1) for the README;
+     logo.html#dark draws it in light ink for dark backgrounds. -->
+<style>
+  @font-face { font-family: "Fraunces"; src: url(fonts/fraunces-normal.woff2) format("woff2"); font-weight: 300 600; font-display: block; }
+  :root { --flock-ink: #17151c; --flock-size: 0.3; color: #17151c; }
+  :root.dark { --flock-ink: #ece6dc; color: #ece6dc; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: transparent; }
+  .lockup { position: relative; height: 100vh; }
+  .stage { position: absolute; left: 2vh; top: 1.4vh; width: 112vh; height: 143vh; }
+  canvas.flock { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .word { position: absolute; left: 108vh; top: 50%; margin: 0; transform: translateY(-50%); font: 330 29vh/1 "Fraunces", Georgia, serif; font-variation-settings: "opsz" 144; letter-spacing: -0.035em; white-space: nowrap; }
+</style>
+<script>if (location.hash === '#dark') document.documentElement.classList.add('dark');</script>
+<script type="module" src="flock.js"></script>
+</head>
+<body>
+<section class="lockup" data-flock="mark" data-flock-anchor=".stage">
+  <div class="stage" aria-hidden="true"></div>
+  <h1 class="word">Murmuration</h1>
+</section>
+<script>
+  // Every eight seconds a falcon (a scripted pointer) crosses the M; otherwise it waits off to the left.
+  const LOOP = 8000, FROM = 4600, TO = 5600;
+  const tick = (now) => {
+    const h = innerHeight, phase = now % LOOP;
+    const t = phase >= FROM && phase <= TO ? (phase - FROM) / (TO - FROM) : -1;
+    const x = t < 0 ? 0.02 * h : -0.05 * h + t * 1.12 * h;
+    const y = t < 0 ? 0.5 * h : h * (0.64 - 0.28 * t);
+    window.dispatchEvent(new PointerEvent('pointermove', { clientX: x, clientY: y }));
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+</script>
+</body>
+</html>

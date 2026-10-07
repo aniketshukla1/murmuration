@@ -1,6 +1,9 @@
 <div align="center">
 
-# Murmuration
+<a href="https://aniketshukla1.github.io/murmuration/"><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.webp">
+  <img src="docs/logo-light.webp" width="600" alt="Murmuration: a flock of birds forms a serif M that turns in 3D beside the wordmark; a falcon cuts through it and the flock closes again.">
+</picture></a>
 
 **Websites that move like what they're about.**
 
@@ -90,7 +93,7 @@ skills/murmuration/
   templates/               murmuration.js (particle engine), scene.js, sequence.js, shader-bg.js,
                            site.js, starter.html/.css, layered-mark.tsx (React Native)
   scripts/                 shoot.mjs (headless screenshots, finds Chrome on macOS, Linux and Windows), sheet.py
-site/                      the website: index.html, flock.js (the GPU flock), MOTION.md
+site/                      the website: index.html, flock.js (the GPU flock), MOTION.md, logo.html (the animated logo)
 examples/                  the six sites above, as the skill built them, plus the fixes
 demo/                      Vesper
 evals/                     test cases for `claude plugin eval` (Claude Code's eval runner): six genres and an interview check

@@ -21,7 +21,11 @@ manifest = [entry for entry in json.load(open(os.path.join(frames_dir, 'manifest
 
 
 def frame(name, width):
-    im = Image.open(os.path.join(frames_dir, name)).convert('RGB')
+    im = Image.open(os.path.join(frames_dir, name))
+    if im.mode in ('RGBA', 'LA', 'P'):  # keep transparency; resample premultiplied so edges get no dark fringe
+        im = im.convert('RGBA').convert('RGBa')
+        return im.resize((width, round(width * im.height / im.width)), Image.LANCZOS).convert('RGBA')
+    im = im.convert('RGB')
     return im.resize((width, round(width * im.height / im.width)), Image.LANCZOS)
 
 
