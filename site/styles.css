@@ -195,6 +195,7 @@ canvas.flock { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0;
 .ex-links .go { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; }
 .ex-links .go i { font-style: normal; transition: transform var(--dur-hover) var(--ease-out); }
 .ex-links .go:hover i { transform: translate(2px, -2px); }
+.ex-links .soon { background: transparent; color: var(--ink-3); box-shadow: inset 0 0 0 1px var(--rule-2); }
 
 /* The stage: the flock forms the subject in its upper part; the real site sits in front, lower down. */
 .ex-stage { position: relative; min-height: min(78svh, 760px); display: flex; align-items: flex-end; }

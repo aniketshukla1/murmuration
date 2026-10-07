@@ -9,6 +9,6 @@ Six sites built by the skill, each from a one-line prompt in [`evals/`](../evals
 | [`architecture-studio`](architecture-studio/) | [prompt](../evals/architecture-studio/prompt.md) | pending |
 | [`music-festival`](music-festival/) | [prompt](../evals/music-festival/prompt.md) | pending |
 | [`kids-science-museum`](kids-science-museum/) | [prompt](../evals/kids-science-museum/prompt.md) | none |
-| [`freight-forwarder`](freight-forwarder/) | [prompt](../evals/freight-forwarder/prompt.md) | pending |
+| [`freight-forwarder`](freight-forwarder/) | [prompt](../evals/freight-forwarder/prompt.md) | `scene.js`: the sea's shader named a variable `half`, a reserved word in GLSL, so the browser refused to compile it and the open-sea sections showed no water. Renamed it `hullHalf`. (The skill now has a rule against reserved words in shaders.) |
 
 Each folder holds the site and the `MOTION.md` brief it wrote before building. Three.js loads from a pinned CDN URL through an import map; vendor it for real hosting, as `references/hosting.md` says.
