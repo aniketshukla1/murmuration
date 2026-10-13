@@ -434,6 +434,7 @@ void main() {
 /* ---------- Run ---------- */
 
 function start() {
+  Object.assign(SHAPES, window.flockShapes || {}); // a page can add its own shapes (a logo, a word) before loading this module
   const small = Math.min(innerWidth, innerHeight) < 720 || !finePointer;
   const SIZE = small ? 40 : 64;
   const N = SIZE * SIZE;
