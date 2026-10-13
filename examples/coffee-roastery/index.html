@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ember &amp; Ash · Coffee roasted every Tuesday, posted the same week</title>
+<meta name="description" content="Small-batch coffee from Bristol. We roast once a week, on Tuesday, in 12 kg batches, and post every bag by Thursday.">
+<meta name="theme-color" content="#efebe5">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+<!-- Boot: theme from storage before paint, and the .js class. -->
+<script>try{var t=localStorage.getItem('ember-ash-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+<!-- The signature: a drum roaster built in Three.js (MOTION.md). -->
+<script type="module" src="roastery.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Shared paint for the drawn stand-ins (shown without WebGL, and until the scene is ready). -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="si-glow" cx="50%" cy="58%" r="62%">
+      <stop offset="0" class="si-glow-1"/>
+      <stop offset="0.55" class="si-glow-2"/>
+      <stop offset="1" class="si-glow-3"/>
+    </radialGradient>
+    <linearGradient id="si-flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#3d6cff"/>
+      <stop offset="0.45" stop-color="#ff7a2e"/>
+      <stop offset="1" stop-color="#ffb35c"/>
+    </linearGradient>
+    <linearGradient id="si-sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" class="si-sheen-1"/>
+      <stop offset="0.5" class="si-sheen-2"/>
+      <stop offset="1" class="si-sheen-1"/>
+    </linearGradient>
+    <pattern id="si-beanfill" width="26" height="18" patternUnits="userSpaceOnUse" patternTransform="scale(1 0.62) rotate(-12)">
+      <rect width="26" height="18" class="si-tray-floor"/>
+      <ellipse class="si-bean" cx="7" cy="5" rx="6" ry="4" transform="rotate(20 7 5)"/>
+      <ellipse class="si-bean-2" cx="19" cy="6" rx="6" ry="4" transform="rotate(-30 19 6)"/>
+      <ellipse class="si-bean" cx="13" cy="13" rx="6" ry="4" transform="rotate(64 13 13)"/>
+      <ellipse class="si-bean-2" cx="2" cy="14" rx="6" ry="4" transform="rotate(-10 2 14)"/>
+      <ellipse class="si-bean-2" cx="26" cy="14" rx="6" ry="4" transform="rotate(-10 26 14)"/>
+      <ellipse class="si-bean" cx="22" cy="-1" rx="6" ry="4" transform="rotate(40 22 -1)"/>
+      <ellipse class="si-bean" cx="22" cy="17" rx="6" ry="4" transform="rotate(40 22 17)"/>
+    </pattern>
+    <clipPath id="si-port-small"><circle cx="210" cy="214" r="54"/></clipPath>
+    <clipPath id="si-port-big"><circle cx="200" cy="200" r="122"/></clipPath>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="Ember and Ash, back to the top">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="mark-ring" cx="24" cy="24" r="18" pathLength="1"/>
+          <path class="mark-bed" d="M10.6 30.5a15 15 0 0 0 26.8 0c-4.4-1.9-8.9-2.6-13.4-2.6s-9 .7-13.4 2.6z"/>
+          <circle class="mark-ember" cx="24" cy="19.5" r="3.4"/>
+        </svg>
+        <span class="brand-name">Ember <i>&amp;</i> Ash</span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#roast">The roast</a>
+        <a href="#week">The week</a>
+        <a href="#coffees">Coffees</a>
+        <a href="#subscribe">Subscribe</a>
+      </nav>
+      <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" aria-label="Pause the roaster">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 6h3v12H8zm5 0h3v12h-3z"/><path class="i-play" d="M8.5 5.8v12.4L18.6 12z"/></svg>
+      </button>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z"/></svg>
+      </button>
+      <a class="button button-small" href="#coffees">Order<span class="knob-dot" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <span id="top"></span>
+
+  <!-- Hero · Tuesday 06:00: the roaster, burner lit, the green batch just charged. -->
+  <section class="hero" data-stage="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy stack">
+        <p class="eyebrow">Small-batch coffee roasters · Bristol</p>
+        <h1>Roasted on Tuesday. <em>In your cup by Friday.</em></h1>
+        <p class="lead">We roast once a week, twelve kilos at a time, and post every bag before the week is out. Nothing waits in a warehouse and nothing goes stale on a shelf.</p>
+        <div class="actions">
+          <a class="button" href="#coffees">Order this week's roast<span class="knob-dot" aria-hidden="true">→</span></a>
+          <a class="text-link" href="#week">How the week works</a>
+        </div>
+      </div>
+      <div class="scene-anchor hero-stage" data-anchor="hero">
+        <svg class="stand-in" viewBox="0 0 420 460" aria-hidden="true"><ellipse class="si-shadow" cx="232" cy="446" rx="182" ry="11"/><rect class="si-iron" x="330" y="34" width="14" height="124"/><rect class="si-iron" x="324" y="26" width="26" height="10" rx="2"/><rect class="si-iron" x="290" y="168" width="34" height="13"/><rect class="si-enamel" x="314" y="148" width="46" height="82" rx="7"/><path class="si-enamel-2" d="M314 228h46l-15 44h-16z"/><rect class="si-iron" x="326" y="272" width="22" height="14" rx="2"/><rect class="si-iron" x="334" y="286" width="6" height="156"/><path class="si-brass" d="M150 38h120l-36 72h-48z"/><rect class="si-brass-2" x="146" y="33" width="128" height="9" rx="2"/><rect class="si-brass-2" x="196" y="108" width="28" height="22"/><rect class="si-brass" x="224" y="114" width="28" height="5" rx="2"/><rect class="si-enamel" x="86" y="292" width="248" height="138" rx="14"/><rect class="si-iron" x="98" y="430" width="224" height="10" rx="3"/><rect class="si-iron" x="104" y="350" width="120" height="28" rx="5"/><rect x="109" y="355" width="110" height="18" rx="3" fill="url(#si-flame)"/><path class="si-grille" d="M122 352v24M137 352v24M152 352v24M167 352v24M182 352v24M197 352v24M212 352v24"/><circle class="si-face" cx="296" cy="322" r="17"/><circle class="si-brass-line" cx="296" cy="322" r="17"/><path class="si-needle" d="M296 322l10-8"/><circle class="si-brass" cx="296" cy="356" r="8"/><circle class="si-enamel" cx="210" cy="214" r="102"/><circle class="si-iron" cx="210" cy="214" r="90"/><circle class="si-brass-line" cx="210" cy="214" r="90"/><g class="si-bolt"><circle cx="278.4" cy="185.7" r="3"/><circle cx="238.3" cy="145.6" r="3"/><circle cx="181.7" cy="145.6" r="3"/><circle cx="141.6" cy="185.7" r="3"/><circle cx="141.6" cy="242.3" r="3"/><circle cx="181.7" cy="282.4" r="3"/><circle cx="238.3" cy="282.4" r="3"/><circle cx="278.4" cy="242.3" r="3"/></g><circle cx="210" cy="214" r="56" fill="url(#si-glow)"/><g clip-path="url(#si-port-small)"><ellipse class="si-bean-2" cx="235.7" cy="217.7" rx="4.4" ry="3" transform="rotate(8 235.7 217.7)"/><ellipse class="si-bean" cx="190.9" cy="242.2" rx="4.4" ry="3" transform="rotate(42 190.9 242.2)"/><ellipse class="si-bean" cx="230.7" cy="229.2" rx="4.4" ry="3" transform="rotate(35 230.7 229.2)"/><ellipse class="si-bean-2" cx="195.9" cy="237.3" rx="4.4" ry="3" transform="rotate(4 195.9 237.3)"/><ellipse class="si-bean" cx="257.4" cy="235.1" rx="4.4" ry="3" transform="rotate(104 257.4 235.1)"/><ellipse class="si-bean" cx="226.1" cy="222.7" rx="4.4" ry="3" transform="rotate(146 226.1 222.7)"/><ellipse class="si-bean-2" cx="259.0" cy="220.4" rx="4.4" ry="3" transform="rotate(113 259.0 220.4)"/><ellipse class="si-bean" cx="235.7" cy="256.3" rx="4.4" ry="3" transform="rotate(154 235.7 256.3)"/><ellipse class="si-bean" cx="228.4" cy="261.5" rx="4.4" ry="3" transform="rotate(156 228.4 261.5)"/><ellipse class="si-bean-2" cx="250.7" cy="229.1" rx="4.4" ry="3" transform="rotate(146 250.7 229.1)"/><ellipse class="si-bean" cx="210.6" cy="235.2" rx="4.4" ry="3" transform="rotate(37 210.6 235.2)"/><ellipse class="si-bean" cx="195.9" cy="258.2" rx="4.4" ry="3" transform="rotate(101 195.9 258.2)"/><ellipse class="si-bean-2" cx="217.3" cy="234.1" rx="4.4" ry="3" transform="rotate(83 217.3 234.1)"/><ellipse class="si-bean" cx="232.5" cy="238.0" rx="4.4" ry="3" transform="rotate(69 232.5 238.0)"/><ellipse class="si-bean" cx="168.6" cy="235.0" rx="4.4" ry="3" transform="rotate(97 168.6 235.0)"/><ellipse class="si-bean-2" cx="181.8" cy="239.5" rx="4.4" ry="3" transform="rotate(135 181.8 239.5)"/><ellipse class="si-bean" cx="253.3" cy="220.6" rx="4.4" ry="3" transform="rotate(93 253.3 220.6)"/><ellipse class="si-bean" cx="224.8" cy="255.7" rx="4.4" ry="3" transform="rotate(69 224.8 255.7)"/><ellipse class="si-bean-2" cx="176.7" cy="239.0" rx="4.4" ry="3" transform="rotate(90 176.7 239.0)"/><ellipse class="si-bean" cx="239.3" cy="225.3" rx="4.4" ry="3" transform="rotate(44 239.3 225.3)"/><ellipse class="si-bean" cx="221.8" cy="263.9" rx="4.4" ry="3" transform="rotate(127 221.8 263.9)"/><ellipse class="si-bean-2" cx="176.6" cy="233.6" rx="4.4" ry="3" transform="rotate(139 176.6 233.6)"/><ellipse class="si-bean" cx="229.5" cy="244.7" rx="4.4" ry="3" transform="rotate(54 229.5 244.7)"/><ellipse class="si-bean" cx="184.5" cy="230.4" rx="4.4" ry="3" transform="rotate(46 184.5 230.4)"/><ellipse class="si-bean-2" cx="241.1" cy="243.6" rx="4.4" ry="3" transform="rotate(111 241.1 243.6)"/><ellipse class="si-bean" cx="202.9" cy="253.8" rx="4.4" ry="3" transform="rotate(99 202.9 253.8)"/><ellipse class="si-bean" cx="225.1" cy="237.7" rx="4.4" ry="3" transform="rotate(169 225.1 237.7)"/><ellipse class="si-bean-2" cx="188.5" cy="261.1" rx="4.4" ry="3" transform="rotate(102 188.5 261.1)"/><ellipse class="si-bean" cx="244.9" cy="224.3" rx="4.4" ry="3" transform="rotate(57 244.9 224.3)"/><ellipse class="si-bean" cx="219.9" cy="245.1" rx="4.4" ry="3" transform="rotate(108 219.9 245.1)"/><ellipse class="si-bean-2" cx="223.4" cy="228.5" rx="4.4" ry="3" transform="rotate(103 223.4 228.5)"/><ellipse class="si-bean" cx="242.7" cy="231.9" rx="4.4" ry="3" transform="rotate(114 242.7 231.9)"/><ellipse class="si-bean" cx="257.0" cy="214.1" rx="4.4" ry="3" transform="rotate(103 257.0 214.1)"/><ellipse class="si-bean-2" cx="251.0" cy="246.5" rx="4.4" ry="3" transform="rotate(29 251.0 246.5)"/><ellipse class="si-bean" cx="206.4" cy="248.5" rx="4.4" ry="3" transform="rotate(38 206.4 248.5)"/><ellipse class="si-bean" cx="181.9" cy="254.0" rx="4.4" ry="3" transform="rotate(21 181.9 254.0)"/><ellipse class="si-bean-2" cx="209.8" cy="255.1" rx="4.4" ry="3" transform="rotate(60 209.8 255.1)"/><ellipse class="si-bean" cx="245.8" cy="249.1" rx="4.4" ry="3" transform="rotate(114 245.8 249.1)"/><ellipse class="si-bean" cx="240.3" cy="193.6" rx="4.4" ry="3" transform="rotate(157 240.3 193.6)"/><ellipse class="si-bean-2" cx="232.1" cy="189.8" rx="4.4" ry="3" transform="rotate(116 232.1 189.8)"/><ellipse class="si-bean" cx="224.7" cy="192.5" rx="4.4" ry="3" transform="rotate(70 224.7 192.5)"/><ellipse class="si-bean" cx="218.5" cy="195.4" rx="4.4" ry="3" transform="rotate(63 218.5 195.4)"/><ellipse class="si-bean-2" cx="210.7" cy="204.3" rx="4.4" ry="3" transform="rotate(72 210.7 204.3)"/><ellipse class="si-bean" cx="202.8" cy="210.3" rx="4.4" ry="3" transform="rotate(23 202.8 210.3)"/><ellipse class="si-bean" cx="195.0" cy="221.5" rx="4.4" ry="3" transform="rotate(28 195.0 221.5)"/></g><path class="si-glint" d="M178 186a44 44 0 0 1 30-18"/><circle class="si-brass-ring" cx="210" cy="214" r="57"/><circle class="si-brass" cx="264" cy="168" r="6"/><path class="si-steel" d="M199 297h24l40 76h-26z"/><rect class="si-iron-2" x="191" y="282" width="38" height="16" rx="3"/><path class="si-brass-thin" d="M201 290h18"/><rect class="si-iron" x="288" y="404" width="44" height="38"/><path class="si-steel" d="M214 388a96 22 0 0 0 192 0v20a96 22 0 0 1-192 0z"/><ellipse cx="310" cy="388" rx="96" ry="22" fill="url(#si-beanfill)"/><ellipse class="si-steel-line" cx="310" cy="388" rx="96" ry="22"/><path class="si-arms" d="M310 386l78 6M310 386l-64 10M310 386l-6-21"/><circle class="si-brass" cx="310" cy="386" r="5"/></svg>
+        <p class="readout readout-a"><span class="dot" aria-hidden="true"></span>Next roast <b data-date="roast">every Tuesday</b></p>
+        <p class="readout readout-b">Orders close <b data-date="close">Monday 23:59</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The roast · 06:00 to 06:11: the camera at the porthole, the beans taking each step's colour. -->
+  <section id="roast" class="section kiln roast" data-stage="roast">
+    <div class="wrap roast-grid">
+      <div class="section-head stack roast-head">
+        <p class="eyebrow">Tuesday · 06:00 to 06:11</p>
+        <h2>Eleven minutes, one batch, <em>charge to drop</em></h2>
+        <p class="lead">Every coffee we sell goes through the same drum on the same morning. Here is one batch of this week's Huila, minute by minute.</p>
+      </div>
+      <div class="roast-stage">
+        <div class="scene-anchor port-anchor" data-anchor="roast">
+          <svg class="stand-in" viewBox="0 0 400 400" aria-hidden="true"><circle class="si-enamel" cx="200" cy="200" r="198"/><circle class="si-iron" cx="200" cy="200" r="178"/><circle class="si-brass-line" cx="200" cy="200" r="178"/><g class="si-bolt"><circle cx="350.3" cy="151.2" r="5"/><circle cx="292.9" cy="72.2" r="5"/><circle cx="200" cy="42" r="5"/><circle cx="107.1" cy="72.2" r="5"/><circle cx="49.7" cy="151.2" r="5"/><circle cx="49.7" cy="248.8" r="5"/><circle cx="107.1" cy="327.8" r="5"/><circle cx="292.9" cy="327.8" r="5"/><circle cx="350.3" cy="248.8" r="5"/></g><circle cx="200" cy="200" r="124" fill="url(#si-glow)"/><g clip-path="url(#si-port-big)"><ellipse class="si-bean-2" cx="219.4" cy="263.0" rx="9" ry="6.2" transform="rotate(53 219.4 263.0)"/><ellipse class="si-bean" cx="291.0" cy="245.7" rx="9" ry="6.2" transform="rotate(62 291.0 245.7)"/><ellipse class="si-bean" cx="258.6" cy="297.0" rx="9" ry="6.2" transform="rotate(93 258.6 297.0)"/><ellipse class="si-bean-2" cx="219.8" cy="315.9" rx="9" ry="6.2" transform="rotate(52 219.8 315.9)"/><ellipse class="si-bean" cx="152.3" cy="288.3" rx="9" ry="6.2" transform="rotate(14 152.3 288.3)"/><ellipse class="si-bean" cx="298.8" cy="255.4" rx="9" ry="6.2" transform="rotate(52 298.8 255.4)"/><ellipse class="si-bean-2" cx="208.6" cy="268.6" rx="9" ry="6.2" transform="rotate(34 208.6 268.6)"/><ellipse class="si-bean" cx="122.0" cy="277.3" rx="9" ry="6.2" transform="rotate(132 122.0 277.3)"/><ellipse class="si-bean" cx="245.4" cy="220.2" rx="9" ry="6.2" transform="rotate(25 245.4 220.2)"/><ellipse class="si-bean-2" cx="203.6" cy="228.3" rx="9" ry="6.2" transform="rotate(86 203.6 228.3)"/><ellipse class="si-bean" cx="247.6" cy="245.1" rx="9" ry="6.2" transform="rotate(155 247.6 245.1)"/><ellipse class="si-bean" cx="152.3" cy="260.6" rx="9" ry="6.2" transform="rotate(39 152.3 260.6)"/><ellipse class="si-bean-2" cx="308.7" cy="217.6" rx="9" ry="6.2" transform="rotate(31 308.7 217.6)"/><ellipse class="si-bean" cx="230.5" cy="298.7" rx="9" ry="6.2" transform="rotate(172 230.5 298.7)"/><ellipse class="si-bean" cx="135.4" cy="241.3" rx="9" ry="6.2" transform="rotate(162 135.4 241.3)"/><ellipse class="si-bean-2" cx="111.0" cy="264.5" rx="9" ry="6.2" transform="rotate(177 111.0 264.5)"/><ellipse class="si-bean" cx="205.8" cy="283.2" rx="9" ry="6.2" transform="rotate(60 205.8 283.2)"/><ellipse class="si-bean" cx="251.5" cy="272.1" rx="9" ry="6.2" transform="rotate(29 251.5 272.1)"/><ellipse class="si-bean-2" cx="176.5" cy="267.0" rx="9" ry="6.2" transform="rotate(86 176.5 267.0)"/><ellipse class="si-bean" cx="243.6" cy="232.6" rx="9" ry="6.2" transform="rotate(25 243.6 232.6)"/><ellipse class="si-bean" cx="161.3" cy="248.8" rx="9" ry="6.2" transform="rotate(46 161.3 248.8)"/><ellipse class="si-bean-2" cx="212.8" cy="239.9" rx="9" ry="6.2" transform="rotate(118 212.8 239.9)"/><ellipse class="si-bean" cx="136.9" cy="253.6" rx="9" ry="6.2" transform="rotate(88 136.9 253.6)"/><ellipse class="si-bean" cx="262.1" cy="244.8" rx="9" ry="6.2" transform="rotate(39 262.1 244.8)"/><ellipse class="si-bean-2" cx="212.8" cy="306.0" rx="9" ry="6.2" transform="rotate(47 212.8 306.0)"/><ellipse class="si-bean" cx="180.4" cy="249.8" rx="9" ry="6.2" transform="rotate(62 180.4 249.8)"/><ellipse class="si-bean" cx="102.8" cy="255.6" rx="9" ry="6.2" transform="rotate(99 102.8 255.6)"/><ellipse class="si-bean-2" cx="202.5" cy="316.8" rx="9" ry="6.2" transform="rotate(145 202.5 316.8)"/><ellipse class="si-bean" cx="303.6" cy="243.4" rx="9" ry="6.2" transform="rotate(79 303.6 243.4)"/><ellipse class="si-bean" cx="235.3" cy="244.2" rx="9" ry="6.2" transform="rotate(3 235.3 244.2)"/><ellipse class="si-bean-2" cx="277.6" cy="287.3" rx="9" ry="6.2" transform="rotate(138 277.6 287.3)"/><ellipse class="si-bean" cx="241.2" cy="258.7" rx="9" ry="6.2" transform="rotate(14 241.2 258.7)"/><ellipse class="si-bean" cx="260.0" cy="282.9" rx="9" ry="6.2" transform="rotate(110 260.0 282.9)"/><ellipse class="si-bean-2" cx="171.9" cy="300.8" rx="9" ry="6.2" transform="rotate(50 171.9 300.8)"/><ellipse class="si-bean" cx="258.7" cy="213.3" rx="9" ry="6.2" transform="rotate(2 258.7 213.3)"/><ellipse class="si-bean" cx="223.1" cy="235.1" rx="9" ry="6.2" transform="rotate(146 223.1 235.1)"/><ellipse class="si-bean-2" cx="200.9" cy="256.2" rx="9" ry="6.2" transform="rotate(127 200.9 256.2)"/><ellipse class="si-bean" cx="227.6" cy="284.4" rx="9" ry="6.2" transform="rotate(41 227.6 284.4)"/><ellipse class="si-bean" cx="166.0" cy="268.0" rx="9" ry="6.2" transform="rotate(124 166.0 268.0)"/><ellipse class="si-bean-2" cx="287.9" cy="259.0" rx="9" ry="6.2" transform="rotate(80 287.9 259.0)"/><ellipse class="si-bean" cx="262.4" cy="256.2" rx="9" ry="6.2" transform="rotate(28 262.4 256.2)"/><ellipse class="si-bean" cx="165.9" cy="291.9" rx="9" ry="6.2" transform="rotate(162 165.9 291.9)"/><ellipse class="si-bean-2" cx="301.0" cy="232.2" rx="9" ry="6.2" transform="rotate(147 301.0 232.2)"/><ellipse class="si-bean" cx="278.8" cy="249.9" rx="9" ry="6.2" transform="rotate(53 278.8 249.9)"/><ellipse class="si-bean" cx="249.5" cy="282.7" rx="9" ry="6.2" transform="rotate(131 249.5 282.7)"/><ellipse class="si-bean-2" cx="123.1" cy="258.2" rx="9" ry="6.2" transform="rotate(89 123.1 258.2)"/><ellipse class="si-bean" cx="138.3" cy="288.2" rx="9" ry="6.2" transform="rotate(98 138.3 288.2)"/><ellipse class="si-bean" cx="209.4" cy="296.0" rx="9" ry="6.2" transform="rotate(128 209.4 296.0)"/><ellipse class="si-bean-2" cx="186.1" cy="316.8" rx="9" ry="6.2" transform="rotate(141 186.1 316.8)"/><ellipse class="si-bean" cx="271.3" cy="217.2" rx="9" ry="6.2" transform="rotate(11 271.3 217.2)"/><ellipse class="si-bean" cx="222.9" cy="273.0" rx="9" ry="6.2" transform="rotate(126 222.9 273.0)"/><ellipse class="si-bean-2" cx="246.2" cy="298.0" rx="9" ry="6.2" transform="rotate(176 246.2 298.0)"/><ellipse class="si-bean" cx="277.1" cy="203.6" rx="9" ry="6.2" transform="rotate(152 277.1 203.6)"/><ellipse class="si-bean" cx="230.5" cy="223.4" rx="9" ry="6.2" transform="rotate(32 230.5 223.4)"/><ellipse class="si-bean-2" cx="149.1" cy="299.4" rx="9" ry="6.2" transform="rotate(173 149.1 299.4)"/><ellipse class="si-bean" cx="289.4" cy="198.9" rx="9" ry="6.2" transform="rotate(125 289.4 198.9)"/><ellipse class="si-bean" cx="274.3" cy="264.9" rx="9" ry="6.2" transform="rotate(163 274.3 264.9)"/><ellipse class="si-bean-2" cx="149.8" cy="273.1" rx="9" ry="6.2" transform="rotate(55 149.8 273.1)"/><ellipse class="si-bean" cx="216.0" cy="223.3" rx="9" ry="6.2" transform="rotate(57 216.0 223.3)"/><ellipse class="si-bean" cx="240.4" cy="273.7" rx="9" ry="6.2" transform="rotate(175 240.4 273.7)"/><ellipse class="si-bean-2" cx="267.3" cy="141.0" rx="9" ry="6.2" transform="rotate(57 267.3 141.0)"/><ellipse class="si-bean" cx="242.5" cy="144.1" rx="9" ry="6.2" transform="rotate(115 242.5 144.1)"/><ellipse class="si-bean" cx="233.1" cy="157.4" rx="9" ry="6.2" transform="rotate(178 233.1 157.4)"/><ellipse class="si-bean-2" cx="231.7" cy="150.3" rx="9" ry="6.2" transform="rotate(149 231.7 150.3)"/><ellipse class="si-bean" cx="222.4" cy="168.7" rx="9" ry="6.2" transform="rotate(113 222.4 168.7)"/><ellipse class="si-bean" cx="212.2" cy="174.7" rx="9" ry="6.2" transform="rotate(17 212.2 174.7)"/><ellipse class="si-bean-2" cx="195.0" cy="181.8" rx="9" ry="6.2" transform="rotate(39 195.0 181.8)"/><ellipse class="si-bean" cx="182.3" cy="195.3" rx="9" ry="6.2" transform="rotate(170 182.3 195.3)"/><ellipse class="si-bean" cx="167.3" cy="208.7" rx="9" ry="6.2" transform="rotate(66 167.3 208.7)"/><ellipse class="si-bean-2" cx="149.1" cy="215.2" rx="9" ry="6.2" transform="rotate(0 149.1 215.2)"/></g><path class="si-glint si-glint-big" d="M126 146a98 98 0 0 1 66-44"/><circle class="si-brass-ring si-ring-big" cx="200" cy="200" r="129"/><circle class="si-brass" cx="318" cy="104" r="12"/><rect class="si-iron-2" x="168" y="338" width="64" height="28" rx="6"/><path class="si-brass-thin si-thick" d="M184 352h32"/></svg>
+        </div>
+        <figure class="profile" data-profile>
+          <figcaption><span>Roast profile · bean temperature</span><span class="tag">Example · batch 41</span></figcaption>
+          <svg class="profile-chart" viewBox="0 0 420 196" role="img" aria-label="Roast profile: the bean temperature falls from 200 to 93 degrees in the first minute and a half, then climbs to 155 at yellowing at four and a half minutes, 196 at first crack at 8 minutes 40, and 207 at the drop at 11 minutes.">
+            <g class="grid">
+              <path d="M44 146.9H404M44 94H404M44 41.1H404"/>
+            </g>
+            <g class="axis">
+              <text x="36" y="149.9" text-anchor="end">100°</text>
+              <text x="36" y="97" text-anchor="end">150°</text>
+              <text x="36" y="44.1" text-anchor="end">200°</text>
+              <text x="44" y="188">0</text>
+              <text x="109.5" y="188" text-anchor="middle">2</text>
+              <text x="174.9" y="188" text-anchor="middle">4</text>
+              <text x="240.4" y="188" text-anchor="middle">6</text>
+              <text x="305.8" y="188" text-anchor="middle">8</text>
+              <text x="371.3" y="188" text-anchor="middle">10 min</text>
+            </g>
+            <path class="curve" pathLength="1" d="M44 41.1 C45.4 46.1 49.5 60.3 52.2 70.7 C54.9 81.1 57.6 93.8 60.4 103.5 C63.1 113.2 65.8 122 68.5 128.9 C71.3 135.8 73.2 140.5 76.7 144.7 C80.3 149 84.4 153.7 89.8 154.3 C95.3 154.8 100.7 153.4 109.5 147.9 C118.2 142.5 131.3 129.8 142.2 121.5 C153.1 113.2 166.7 103.7 174.9 98.2 C183.1 92.8 185.8 91.5 191.3 88.7 C196.7 85.9 199.5 84.7 207.6 81.3 C215.8 78 229.5 72.5 240.4 68.6 C251.3 64.8 262.2 61.2 273.1 58.1 C284 54.9 296.7 51.7 305.8 49.6 C314.9 47.5 319.6 46.9 327.7 45.4 C335.9 43.9 346 42.1 354.9 40.6 C363.8 39.1 372.9 37.5 381.1 36.4 C389.3 35.2 400.2 34.2 404 33.7"/>
+            <g class="marks">
+              <g class="mark-pt" data-at="0"><circle cx="44" cy="41.1" r="4"/></g>
+              <g class="mark-pt" data-at="1"><circle cx="191.3" cy="88.7" r="4"/><text x="191.3" y="112" text-anchor="middle">yellowing</text></g>
+              <g class="mark-pt" data-at="2"><circle cx="327.7" cy="45.4" r="4"/><text x="327.7" y="70" text-anchor="middle">first crack</text></g>
+              <g class="mark-pt" data-at="3"><circle cx="404" cy="33.7" r="4"/><text x="404" y="20" text-anchor="end">drop</text></g>
+            </g>
+          </svg>
+        </figure>
+      </div>
+      <ol class="steps">
+        <li class="step" data-roast="0" data-heat="1" data-draw="0.095" data-at="0">
+          <p class="step-meta"><span>06:00</span><span>drum 200 °C</span></p>
+          <h3>Charge</h3>
+          <p>Twelve kilos of green coffee fall from the hopper into a drum that has been heating since five. The beans are pale, hard and smell of cut grass.</p>
+        </li>
+        <li class="step" data-roast="0.36" data-heat="0.95" data-draw="0.529" data-at="1">
+          <p class="step-meta"><span>06:04</span><span>bean 155 °C</span></p>
+          <h3>Yellowing</h3>
+          <p>The water cooks out. The beans turn straw-yellow, then tan, and the roastery starts to smell of toast and hay.</p>
+        </li>
+        <li class="step" data-roast="0.74" data-heat="0.6" data-draw="0.835" data-at="2">
+          <p class="step-meta"><span>06:08</span><span>bean 196 °C</span></p>
+          <h3>First crack</h3>
+          <p>Steam breaks through each bean with a crack like popcorn. We turn the flame down and start counting the development time.</p>
+        </li>
+        <li class="step" data-roast="1" data-heat="0.5" data-draw="1" data-at="3">
+          <p class="step-meta"><span>06:11</span><span>bean 207 °C</span></p>
+          <h3>Drop</h3>
+          <p>Two and a half minutes after first crack, at the colour we chose on the cupping table, the door opens and the batch falls.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- The drop · 06:11: the batch pours into the cooling tray and the arms sweep it. -->
+  <section id="drop" class="section kiln drop" data-stage="cool">
+    <div class="wrap split drop-grid">
+      <div class="stack drop-copy">
+        <p class="eyebrow">06:11 · The drop</p>
+        <h2>Four minutes to <em>stop the roast</em></h2>
+        <p class="lead">The batch pours into the cooling tray. Its arms sweep the beans while a fan pulls cold air down through them, so the roast stops where we chose and not a degree later.</p>
+        <ul class="facts">
+          <li><b>207 → 25 °C</b><span>in under four minutes, every batch</span></li>
+          <li><b>The chaff</b><span>the papery skin the roast lifts off each bean. It is the ash in our name; we collect it and it goes to an allotment down the road.</span></li>
+        </ul>
+      </div>
+      <div class="scene-anchor drop-stage" data-anchor="cool">
+        <svg class="stand-in" viewBox="0 0 400 300" aria-hidden="true"><ellipse class="si-shadow" cx="200" cy="286" rx="152" ry="10"/><path class="si-iron" d="M146 196h108l12 86H134z"/><path class="si-steel" d="M30 140a170 64 0 0 0 340 0v32a170 64 0 0 1-340 0z"/><ellipse cx="200" cy="140" rx="170" ry="64" fill="url(#si-beanfill)"/><ellipse class="si-steel-line" cx="200" cy="140" rx="170" ry="64"/><path class="si-arms si-arms-big" d="M200 136L355.6 150.1M200 136L63.2 169M200 136L186.2 82.2"/><circle class="si-brass" cx="200" cy="136" r="10"/><path class="si-steel" d="M52 4h64l44 86-58 8z"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- The week: the promise, day by day. -->
+  <section id="week" class="section week" data-stage="off">
+    <div class="wrap">
+      <div class="section-head stack">
+        <p class="eyebrow">The week</p>
+        <h2>One roast a week, <em>and nothing waits</em></h2>
+      </div>
+      <ol class="days">
+        <li class="day">
+          <p class="day-name">Mon</p>
+          <h3>Orders close</h3>
+          <p>At 23:59. We roast what was ordered, plus a little for our own counter.</p>
+        </li>
+        <li class="day is-roast">
+          <p class="day-name">Tue</p>
+          <h3>Roast day</h3>
+          <p>Six to eight batches from 06:00, each one logged, tasted and labelled.</p>
+        </li>
+        <li class="day">
+          <p class="day-name">Wed</p>
+          <h3>Rest and cup</h3>
+          <p>The beans breathe out their CO₂ for a day. We cup every batch before it is packed.</p>
+        </li>
+        <li class="day">
+          <p class="day-name">Thu</p>
+          <h3>Pack and post</h3>
+          <p>Bagged with the roast date on the front and in the post by 15:00.</p>
+        </li>
+        <li class="day">
+          <p class="day-name">Fri</p>
+          <h3>At your door</h3>
+          <p>Three days off roast, right at the start of its best fortnight.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- This Tuesday's roast: three coffees. -->
+  <section id="coffees" class="section coffees" data-stage="off">
+    <div class="wrap">
+      <div class="coffees-head">
+        <div class="stack">
+          <p class="eyebrow">This Tuesday's roast</p>
+          <h2>Three coffees, <em>one morning</em></h2>
+        </div>
+        <p class="lead">Order by <b data-date="close">Monday 23:59</b> and your bag is roasted on <b data-date="roast">Tuesday</b> and posted by <b data-date="post">Thursday</b>.</p>
+      </div>
+      <div class="coffee-grid">
+        <article class="coffee">
+          <p class="coffee-origin">Colombia · Huila</p>
+          <h3>Las Flores</h3>
+          <p class="notes">Red apple, panela, cocoa nib</p>
+          <dl class="coffee-facts">
+            <div><dt>Process</dt><dd>Washed</dd></div>
+            <div><dt>Variety</dt><dd>Caturra, Castillo</dd></div>
+            <div><dt>Grown at</dt><dd>1,750 m</dd></div>
+          </dl>
+          <div class="roast-level" style="--level: 2">
+            <span class="roast-label">Roast</span>
+            <span class="roast-bar" aria-hidden="true"></span>
+            <span class="roast-name">Light to medium</span>
+          </div>
+          <div class="coffee-buy">
+            <p class="price">£12.50 <span>250 g</span></p>
+            <a class="button button-small" href="#subscribe">Order<span class="knob-dot" aria-hidden="true">+</span></a>
+          </div>
+        </article>
+        <article class="coffee">
+          <p class="coffee-origin">Ethiopia · Guji</p>
+          <h3>Uraga</h3>
+          <p class="notes">Blueberry, jasmine, cacao</p>
+          <dl class="coffee-facts">
+            <div><dt>Process</dt><dd>Natural</dd></div>
+            <div><dt>Variety</dt><dd>Ethiopian landraces</dd></div>
+            <div><dt>Grown at</dt><dd>2,100 m</dd></div>
+          </dl>
+          <div class="roast-level" style="--level: 1">
+            <span class="roast-label">Roast</span>
+            <span class="roast-bar" aria-hidden="true"></span>
+            <span class="roast-name">Light</span>
+          </div>
+          <div class="coffee-buy">
+            <p class="price">£14.00 <span>250 g</span></p>
+            <a class="button button-small" href="#subscribe">Order<span class="knob-dot" aria-hidden="true">+</span></a>
+          </div>
+        </article>
+        <article class="coffee">
+          <p class="coffee-origin">Brazil &amp; Colombia · House espresso</p>
+          <h3>Ash</h3>
+          <p class="notes">Dark chocolate, hazelnut, molasses</p>
+          <dl class="coffee-facts">
+            <div><dt>Process</dt><dd>Pulped natural, washed</dd></div>
+            <div><dt>Built for</dt><dd>Espresso and milk</dd></div>
+            <div><dt>Grown at</dt><dd>1,100 to 1,700 m</dd></div>
+          </dl>
+          <div class="roast-level" style="--level: 3">
+            <span class="roast-label">Roast</span>
+            <span class="roast-bar" aria-hidden="true"></span>
+            <span class="roast-name">Medium</span>
+          </div>
+          <div class="coffee-buy">
+            <p class="price">£11.00 <span>250 g</span></p>
+            <a class="button button-small" href="#subscribe">Order<span class="knob-dot" aria-hidden="true">+</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Night in both themes: the statement fills in as it is read. -->
+  <section class="section night on-night statement-band" data-stage="off">
+    <div class="wrap">
+      <p class="eyebrow">Why Tuesday</p>
+      <p class="statement" data-fill>Coffee tastes best from about the third day after roasting to the third week. We roast on Tuesday so that all of it happens in your kitchen, and none of it on a shelf.</p>
+    </div>
+  </section>
+
+  <!-- Numbers on hairlines. -->
+  <section id="numbers" class="section numbers" data-stage="off">
+    <div class="wrap">
+      <ul class="figures">
+        <li><p class="figure">12<small>kg</small></p><p>The most we put in the drum at once, so every bean sees the same heat.</p></li>
+        <li><p class="figure">1<small>day</small></p><p>Tuesday. We have roasted on it every week since March 2019.</p></li>
+        <li><p class="figure">72<small>h</small></p><p>The longest a bag waits between the cooling tray and the post.</p></li>
+        <li><p class="figure">0</p><p>Bags on a shelf. If nobody ordered it by Monday, we do not roast it.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Subscribe: the burner out, the batch resting in the tray. -->
+  <section id="subscribe" class="section closing" data-stage="close">
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="wrap closing-grid">
+      <div class="cta stack">
+        <p class="eyebrow">Next roast · <span data-date="roast-long">every Tuesday</span></p>
+        <h2>Join the <em>Tuesday roast</em></h2>
+        <p class="lead">A bag of whatever is in the drum that week, roasted on Tuesday and posted on Thursday. Skip or stop any Monday before 23:59.</p>
+        <ul class="plans">
+          <li class="plan"><b>Every week</b><span>£11.00 a bag</span></li>
+          <li class="plan is-pick"><b>Every two weeks</b><span>£11.50 a bag</span><em>Most chosen</em></li>
+          <li class="plan"><b>Just one bag</b><span>from £11.00</span></li>
+        </ul>
+        <div class="actions">
+          <a class="button" href="#subscribe"><span>Start with <span data-date="roast-short">next Tuesday</span></span><span class="knob-dot" aria-hidden="true">→</span></a>
+        </div>
+        <p class="fine">Orders close <span data-date="close-long">on Monday at 23:59</span>. Free UK post on orders over £25.</p>
+      </div>
+      <div class="scene-anchor close-stage" data-anchor="close">
+        <svg class="stand-in" viewBox="0 0 420 460" aria-hidden="true"><ellipse class="si-shadow" cx="232" cy="446" rx="182" ry="11"/><rect class="si-iron" x="330" y="34" width="14" height="124"/><rect class="si-iron" x="324" y="26" width="26" height="10" rx="2"/><rect class="si-iron" x="290" y="168" width="34" height="13"/><rect class="si-enamel" x="314" y="148" width="46" height="82" rx="7"/><path class="si-enamel-2" d="M314 228h46l-15 44h-16z"/><rect class="si-iron" x="326" y="272" width="22" height="14" rx="2"/><rect class="si-iron" x="334" y="286" width="6" height="156"/><path class="si-brass" d="M150 38h120l-36 72h-48z"/><rect class="si-brass-2" x="146" y="33" width="128" height="9" rx="2"/><rect class="si-brass-2" x="196" y="108" width="28" height="22"/><rect class="si-brass" x="224" y="114" width="28" height="5" rx="2"/><rect class="si-enamel" x="86" y="292" width="248" height="138" rx="14"/><rect class="si-iron" x="98" y="430" width="224" height="10" rx="3"/><rect class="si-iron" x="104" y="350" width="120" height="28" rx="5"/><rect x="109" y="355" width="110" height="18" rx="3" fill="url(#si-flame)"/><path class="si-grille" d="M122 352v24M137 352v24M152 352v24M167 352v24M182 352v24M197 352v24M212 352v24"/><circle class="si-face" cx="296" cy="322" r="17"/><circle class="si-brass-line" cx="296" cy="322" r="17"/><path class="si-needle" d="M296 322l10-8"/><circle class="si-brass" cx="296" cy="356" r="8"/><circle class="si-enamel" cx="210" cy="214" r="102"/><circle class="si-iron" cx="210" cy="214" r="90"/><circle class="si-brass-line" cx="210" cy="214" r="90"/><g class="si-bolt"><circle cx="278.4" cy="185.7" r="3"/><circle cx="238.3" cy="145.6" r="3"/><circle cx="181.7" cy="145.6" r="3"/><circle cx="141.6" cy="185.7" r="3"/><circle cx="141.6" cy="242.3" r="3"/><circle cx="181.7" cy="282.4" r="3"/><circle cx="238.3" cy="282.4" r="3"/><circle cx="278.4" cy="242.3" r="3"/></g><circle cx="210" cy="214" r="56" fill="url(#si-glow)"/><g clip-path="url(#si-port-small)"><ellipse class="si-bean-2" cx="235.7" cy="217.7" rx="4.4" ry="3" transform="rotate(8 235.7 217.7)"/><ellipse class="si-bean" cx="190.9" cy="242.2" rx="4.4" ry="3" transform="rotate(42 190.9 242.2)"/><ellipse class="si-bean" cx="230.7" cy="229.2" rx="4.4" ry="3" transform="rotate(35 230.7 229.2)"/><ellipse class="si-bean-2" cx="195.9" cy="237.3" rx="4.4" ry="3" transform="rotate(4 195.9 237.3)"/><ellipse class="si-bean" cx="257.4" cy="235.1" rx="4.4" ry="3" transform="rotate(104 257.4 235.1)"/><ellipse class="si-bean" cx="226.1" cy="222.7" rx="4.4" ry="3" transform="rotate(146 226.1 222.7)"/><ellipse class="si-bean-2" cx="259.0" cy="220.4" rx="4.4" ry="3" transform="rotate(113 259.0 220.4)"/><ellipse class="si-bean" cx="235.7" cy="256.3" rx="4.4" ry="3" transform="rotate(154 235.7 256.3)"/><ellipse class="si-bean" cx="228.4" cy="261.5" rx="4.4" ry="3" transform="rotate(156 228.4 261.5)"/><ellipse class="si-bean-2" cx="250.7" cy="229.1" rx="4.4" ry="3" transform="rotate(146 250.7 229.1)"/><ellipse class="si-bean" cx="210.6" cy="235.2" rx="4.4" ry="3" transform="rotate(37 210.6 235.2)"/><ellipse class="si-bean" cx="195.9" cy="258.2" rx="4.4" ry="3" transform="rotate(101 195.9 258.2)"/><ellipse class="si-bean-2" cx="217.3" cy="234.1" rx="4.4" ry="3" transform="rotate(83 217.3 234.1)"/><ellipse class="si-bean" cx="232.5" cy="238.0" rx="4.4" ry="3" transform="rotate(69 232.5 238.0)"/><ellipse class="si-bean" cx="168.6" cy="235.0" rx="4.4" ry="3" transform="rotate(97 168.6 235.0)"/><ellipse class="si-bean-2" cx="181.8" cy="239.5" rx="4.4" ry="3" transform="rotate(135 181.8 239.5)"/><ellipse class="si-bean" cx="253.3" cy="220.6" rx="4.4" ry="3" transform="rotate(93 253.3 220.6)"/><ellipse class="si-bean" cx="224.8" cy="255.7" rx="4.4" ry="3" transform="rotate(69 224.8 255.7)"/><ellipse class="si-bean-2" cx="176.7" cy="239.0" rx="4.4" ry="3" transform="rotate(90 176.7 239.0)"/><ellipse class="si-bean" cx="239.3" cy="225.3" rx="4.4" ry="3" transform="rotate(44 239.3 225.3)"/><ellipse class="si-bean" cx="221.8" cy="263.9" rx="4.4" ry="3" transform="rotate(127 221.8 263.9)"/><ellipse class="si-bean-2" cx="176.6" cy="233.6" rx="4.4" ry="3" transform="rotate(139 176.6 233.6)"/><ellipse class="si-bean" cx="229.5" cy="244.7" rx="4.4" ry="3" transform="rotate(54 229.5 244.7)"/><ellipse class="si-bean" cx="184.5" cy="230.4" rx="4.4" ry="3" transform="rotate(46 184.5 230.4)"/><ellipse class="si-bean-2" cx="241.1" cy="243.6" rx="4.4" ry="3" transform="rotate(111 241.1 243.6)"/><ellipse class="si-bean" cx="202.9" cy="253.8" rx="4.4" ry="3" transform="rotate(99 202.9 253.8)"/><ellipse class="si-bean" cx="225.1" cy="237.7" rx="4.4" ry="3" transform="rotate(169 225.1 237.7)"/><ellipse class="si-bean-2" cx="188.5" cy="261.1" rx="4.4" ry="3" transform="rotate(102 188.5 261.1)"/><ellipse class="si-bean" cx="244.9" cy="224.3" rx="4.4" ry="3" transform="rotate(57 244.9 224.3)"/><ellipse class="si-bean" cx="219.9" cy="245.1" rx="4.4" ry="3" transform="rotate(108 219.9 245.1)"/><ellipse class="si-bean-2" cx="223.4" cy="228.5" rx="4.4" ry="3" transform="rotate(103 223.4 228.5)"/><ellipse class="si-bean" cx="242.7" cy="231.9" rx="4.4" ry="3" transform="rotate(114 242.7 231.9)"/><ellipse class="si-bean" cx="257.0" cy="214.1" rx="4.4" ry="3" transform="rotate(103 257.0 214.1)"/><ellipse class="si-bean-2" cx="251.0" cy="246.5" rx="4.4" ry="3" transform="rotate(29 251.0 246.5)"/><ellipse class="si-bean" cx="206.4" cy="248.5" rx="4.4" ry="3" transform="rotate(38 206.4 248.5)"/><ellipse class="si-bean" cx="181.9" cy="254.0" rx="4.4" ry="3" transform="rotate(21 181.9 254.0)"/><ellipse class="si-bean-2" cx="209.8" cy="255.1" rx="4.4" ry="3" transform="rotate(60 209.8 255.1)"/><ellipse class="si-bean" cx="245.8" cy="249.1" rx="4.4" ry="3" transform="rotate(114 245.8 249.1)"/><ellipse class="si-bean" cx="240.3" cy="193.6" rx="4.4" ry="3" transform="rotate(157 240.3 193.6)"/><ellipse class="si-bean-2" cx="232.1" cy="189.8" rx="4.4" ry="3" transform="rotate(116 232.1 189.8)"/><ellipse class="si-bean" cx="224.7" cy="192.5" rx="4.4" ry="3" transform="rotate(70 224.7 192.5)"/><ellipse class="si-bean" cx="218.5" cy="195.4" rx="4.4" ry="3" transform="rotate(63 218.5 195.4)"/><ellipse class="si-bean-2" cx="210.7" cy="204.3" rx="4.4" ry="3" transform="rotate(72 210.7 204.3)"/><ellipse class="si-bean" cx="202.8" cy="210.3" rx="4.4" ry="3" transform="rotate(23 202.8 210.3)"/><ellipse class="si-bean" cx="195.0" cy="221.5" rx="4.4" ry="3" transform="rotate(28 195.0 221.5)"/></g><path class="si-glint" d="M178 186a44 44 0 0 1 30-18"/><circle class="si-brass-ring" cx="210" cy="214" r="57"/><circle class="si-brass" cx="264" cy="168" r="6"/><path class="si-steel" d="M199 297h24l40 76h-26z"/><rect class="si-iron-2" x="191" y="282" width="38" height="16" rx="3"/><path class="si-brass-thin" d="M201 290h18"/><rect class="si-iron" x="288" y="404" width="44" height="38"/><path class="si-steel" d="M214 388a96 22 0 0 0 192 0v20a96 22 0 0 1-192 0z"/><ellipse cx="310" cy="388" rx="96" ry="22" fill="url(#si-beanfill)"/><ellipse class="si-steel-line" cx="310" cy="388" rx="96" ry="22"/><path class="si-arms" d="M310 386l78 6M310 386l-64 10M310 386l-6-21"/><circle class="si-brass" cx="310" cy="386" r="5"/></svg>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" data-stage="close">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-title">Ember &amp; Ash Coffee Roasters</p>
+      <p>Unit 3, Kiln Yard, Bristol</p>
+    </div>
+    <div>
+      <p>Collect from the roastery on Thursdays, 15:00 to 18:00.</p>
+      <p><a href="mailto:hello@emberandash.example">hello@emberandash.example</a></p>
+    </div>
+    <div>
+      <p>Roasted every Tuesday since 2019.</p>
+      <p>© 2026 Ember &amp; Ash</p>
+    </div>
+  </div>
+  <p class="footer-mark" data-glow aria-hidden="true">Ember &amp; Ash</p>
+</footer>
+
+<!-- The fixed scene layer: the last child of <body> (stacking rules in styles.css). -->
+<div class="scene-layer" aria-hidden="true"><canvas></canvas></div>
+</body>
+</html>
