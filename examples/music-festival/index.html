@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lowtide · 27–29 August 2027 · Merrow Sands</title>
+<meta name="description" content="Lowtide is a three-day electronic music festival on the tidal flats of Merrow Sands. When the sea goes out, the Ring lights up and we dance where the sea was.">
+<meta name="theme-color" content="#2c66c9">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%2307091a'/%3E%3Cpath d='M11 27a13 13 0 1 1 26 0' fill='none' stroke='%23ff4a1c' stroke-width='5'/%3E%3Cpath d='M8 31h32M13 36h22' stroke='%23ff4a1c' stroke-width='2.5' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<!-- Boot: theme from storage before paint, and the .js class. -->
+<script>try{var t=localStorage.getItem('site-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+<!-- The signature: a 3D bay built in code (MOTION.md). Three.js r170 is vendored. -->
+<script type="importmap">{"imports": {"three": "./vendor/three.module.min.js"}}</script>
+<script type="module" src="bay.js"></script>
+</head>
+<body>
+<a class="skip" href="#lineup">Skip to the lineup</a>
+<header class="site-header">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="Lowtide, back to the top">
+        <!-- The Ring, half in the water: the waterline follows the tide on the page (--tide). -->
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <clipPath id="mark-air"><rect class="mark-tide" x="-4" y="-30" width="56" height="53"/></clipPath>
+            <clipPath id="mark-sea"><rect class="mark-tide" x="-4" y="23" width="56" height="40"/></clipPath>
+          </defs>
+          <circle cx="24" cy="21" r="13" class="mark-ring" clip-path="url(#mark-air)"/>
+          <g clip-path="url(#mark-sea)">
+            <circle cx="24" cy="21" r="13" class="mark-echo"/>
+          </g>
+          <rect class="mark-tide mark-line" x="3" y="22" width="42" height="2" rx="1"/>
+        </svg>
+        <span class="brand-name">Lowtide</span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#lineup">Lineup</a>
+        <a href="#tides">Tide times</a>
+        <a href="#beach">The beach</a>
+      </nav>
+      <button class="beat-toggle" type="button" data-beat-toggle aria-pressed="false">
+        <span class="beat-icon" aria-hidden="true"></span><span class="beat-label">Pause the beat</span>
+      </button>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      </button>
+      <a class="button button-small" href="#tickets">Tickets<span class="knob-dot" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- High water. The scene: the camera on the dunes, the sea high around the Ring's piles. -->
+  <section class="hero sky-hero" data-stop="hero" data-tide="1">
+    <svg class="standin standin-hero" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="hero-sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" class="stop-sea-far"/>
+          <stop offset="1" class="stop-sea-near"/>
+        </linearGradient>
+      </defs>
+      <rect class="sb-sea" x="0" y="566" width="1440" height="334" fill="url(#hero-sea)"/>
+      <g class="sb-bay">
+      <circle class="sb-sun" cx="1180" cy="400" r="30"/>
+      <g class="sb-glitter">
+        <path d="M1150 590h60M1120 615h110M1160 642h70M1090 672h150M1140 708h120M1060 748h190M1120 792h150"/>
+      </g>
+      <g class="sb-ring-echo"><ellipse cx="980" cy="700" rx="104" ry="40"/></g>
+      <g class="sb-piles"><path d="M846 652v30M906 652v30M980 652v30M1054 652v30M1114 652v30"/></g>
+      <rect class="sb-deck" x="826" y="640" width="308" height="12" rx="2"/>
+      <rect class="sb-mast" x="868" y="526" width="6" height="116"/>
+      <rect class="sb-mast" x="1086" y="526" width="6" height="116"/>
+      <circle class="sb-ring" cx="980" cy="532" r="104"/>
+      </g>
+      <path class="sb-sand" d="M0 818C260 796 520 808 760 800S1220 778 1440 786V900H0Z"/>
+      <path class="sb-swash" d="M0 818C260 796 520 808 760 800S1220 778 1440 786"/>
+    </svg>
+    <div class="wrap hero-wrap">
+      <h1 class="wordmark"><span class="sr">Lowtide</span><span class="letters" aria-hidden="true"><span style="--i:0">L</span><span style="--i:1">O</span><span style="--i:2">W</span><span style="--i:3">T</span><span style="--i:4">I</span><span style="--i:5">D</span><span style="--i:6">E</span></span></h1>
+      <div class="hero-row">
+        <div class="hero-copy">
+          <p class="eyebrow date"><span>27–29 August 2027</span><span>Merrow Sands</span></p>
+          <p class="lead">Three nights on the sand the sea gives back. When the tide goes out, the Ring lights up on the flats and we dance where the sea was.</p>
+          <div class="actions">
+            <a class="button" href="#tickets">Get tickets<span class="knob-dot" aria-hidden="true">→</span></a>
+            <a class="button button-ghost" href="#lineup">See the lineup</a>
+          </div>
+        </div>
+        <ul class="tags" aria-label="Friday's tide">
+          <li class="tag tag-hw"><span class="tag-dot" aria-hidden="true"></span>High water · 14:52 · 4.9 m</li>
+          <li class="tag tag-open"><span class="tag-dot on" aria-hidden="true"></span>The Ring opens · 18:30</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- The ebb. The scene: the tide drops, the flats come up wet; the setting sun sits in the Ring. -->
+  <section id="ebb" class="section sky-ebb" data-stop="ebb" data-tide="0.55">
+    <div class="wrap">
+      <div class="panel ebb-panel">
+        <p class="eyebrow">How Lowtide works</p>
+        <h2>The sea walks out 1.2&nbsp;km. We dance where it was.</h2>
+        <ol class="steps">
+          <li>
+            <p class="step-n">01 · Ebb</p>
+            <h3>The flats dry out</h3>
+            <p>About two and a half hours before low water the sea clears the floor. The lamp line comes on and you walk out across hard, rippled sand.</p>
+          </li>
+          <li>
+            <p class="step-n">02 · Low water</p>
+            <h3>The Ring lights up</h3>
+            <p>A 26-metre ring of light on piles, a sound system pointed out to sea, and a dance floor that only exists for five hours a night.</p>
+          </li>
+          <li>
+            <p class="step-n">03 · Flood</p>
+            <h3>The horns sound</h3>
+            <p>When the tide turns, the horns give you twenty minutes. The floor walks up the beach to the Dunes stage, which plays until 4.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lineup. The scene: crowd height, behind the crowd, the beams on and the kick pulsing. -->
+  <section id="lineup" class="section on-night sky-night" data-stop="lineup" data-tide="0.1">
+    <svg class="standin standin-night" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="beam" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#ff6a3d" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#ff6a3d" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="sb-beam" d="M1030 640L760 0H900ZM1042 640L990 0H1100ZM1070 640L1220 0H1350ZM1058 640L1440 80V0H1420Z"/>
+      <circle class="sb-ring-glow" cx="1050" cy="470" r="170"/>
+      <circle class="sb-ring" cx="1050" cy="470" r="170"/>
+      <rect class="sb-deck" x="800" y="640" width="500" height="14" rx="2"/>
+      <path class="sb-crowd" d="M0 900V760c40-14 60 8 90-6s50 10 80-4 60 8 90-6 40 10 80-6 70 12 100-4 50 8 90-4 60 10 90-6 40 8 80-6 70 12 100-2 60 8 90-6 50 10 80-6 60 8 90-4 60 10 100-4 40 6 80-6 60 10 90-2V900Z"/>
+    </svg>
+    <div class="wrap">
+      <div class="section-head narrow-head">
+        <p class="eyebrow">Lineup · three tides</p>
+        <h2 class="display">Three nights. Twenty-seven acts. One floor that floods.</h2>
+      </div>
+      <div class="days">
+        <article class="day panel" data-progress>
+          <header class="day-head">
+            <p class="day-date">Fri 27 Aug</p>
+            <p class="day-meta">The Ring 18:30–23:40<br>Low water 21:04</p>
+          </header>
+          <div class="day-bill">
+            <p class="headliner sway" style="--dir:1">Odalys Fern</p>
+            <p class="names sway" style="--dir:-1">Brackwater <i>·</i> Lune Okafor <i>·</i> Tomo Achterberg <i>·</i> Nightjar Unit</p>
+            <p class="names sway" style="--dir:1">Mira Kessel <i>·</i> Saltfield b2b Rhee <i>·</i> Pell Ambrose <i>·</i> Coral Hum</p>
+          </div>
+        </article>
+        <article class="day panel" data-progress>
+          <header class="day-head">
+            <p class="day-date">Sat 28 Aug</p>
+            <p class="day-meta">The Ring 19:10–00:20<br>Low water 21:43</p>
+          </header>
+          <div class="day-bill">
+            <p class="headliner sway" style="--dir:-1">Neap Sound System</p>
+            <p class="names sway" style="--dir:1">Ines Valcourt <i>·</i> Dredge <i>·</i> Haruto Bell <i>·</i> Ama Quayson</p>
+            <p class="names sway" style="--dir:-1">Kelp Theory <i>·</i> Groyne <i>·</i> Rosa Lindqvist <i>·</i> Wet Sand Radio</p>
+          </div>
+        </article>
+        <article class="day panel" data-progress>
+          <header class="day-head">
+            <p class="day-date">Sun 29 Aug</p>
+            <p class="day-meta">The Ring 19:45–01:00<br>Low water 22:20</p>
+          </header>
+          <div class="day-bill">
+            <p class="headliner sway" style="--dir:1">Amara Voss</p>
+            <p class="names sway" style="--dir:-1">Spring Range <i>·</i> Delphine Arrow <i>·</i> Foghorn Club <i>·</i> Ruben Sá</p>
+            <p class="names sway" style="--dir:1">Shoal <i>·</i> Tess Marrow <i>·</i> Second Bar <i>·</i> The Last Bus Home (live)</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tide times. The scene: a wide, high view of the dry flats, the Ring, the crowd and the lamp line. -->
+  <section id="tides" class="section on-night sky-night" data-stop="tides" data-tide="0">
+    <div class="wrap">
+      <div class="section-head narrow-head">
+        <p class="eyebrow">Tide times</p>
+        <h2 class="display">The tide sets the times.</h2>
+        <p class="lead">The Ring only exists while the flats are dry. It opens when the falling tide drops below 2.2&nbsp;m and closes when the flood comes back over the floor, about forty minutes later each night.</p>
+      </div>
+      <figure class="panel chart" data-progress>
+        <figcaption class="chart-cap">
+          <span>Predicted height of tide, metres</span>
+          <span class="chart-key"><i aria-hidden="true"></i>The Ring is open</span>
+        </figcaption>
+        <div class="chart-scroll" role="group" aria-label="Tide chart, Friday to Monday">
+        <div class="chart-plot">
+          <svg viewBox="0 0 1000 280" preserveAspectRatio="none" aria-hidden="true">
+            <g class="chart-grid">
+              <path d="M0 50H1000M0 90H1000M0 130H1000M0 170H1000M0 210H1000M0 250H1000"/>
+            </g>
+            <g class="chart-nights">
+              <path d="M181.8 0V280M545.5 0V280M909.1 0V280"/>
+            </g>
+            <g class="chart-open">
+              <rect x="98.2" y="0" width="79.1" height="280"/>
+              <rect x="471.8" y="0" width="78.7" height="280"/>
+              <rect x="844.4" y="0" width="79.5" height="280"/>
+            </g>
+            <path class="chart-floor" d="M0 162H1000"/>
+            <path class="chart-curve" pathLength="1" d="M0.0 128.1 L3.8 117.6 L7.6 107.5 L11.4 97.9 L15.2 88.9 L18.9 80.6 L22.7 73.3 L26.5 67.1 L30.3 62.0 L34.1 58.1 L37.9 55.4 L41.7 54.1 L45.5 54.2 L49.2 55.6 L53.0 58.4 L56.8 62.5 L60.6 67.8 L64.4 74.3 L68.2 81.8 L72.0 90.3 L75.8 99.5 L79.5 109.5 L83.3 119.9 L87.1 130.6 L90.9 141.5 L94.7 152.3 L98.5 163.0 L102.3 173.2 L106.1 183.0 L109.8 192.1 L113.6 200.3 L117.4 207.6 L121.2 213.7 L125.0 218.7 L128.8 222.5 L132.6 224.9 L136.4 226.0 L140.2 225.6 L143.9 224.0 L147.7 221.0 L151.5 216.8 L155.3 211.3 L159.1 204.8 L162.9 197.3 L166.7 188.8 L170.5 179.6 L174.2 169.8 L178.0 159.6 L181.8 149.1 L185.6 138.5 L189.4 127.9 L193.2 117.5 L197.0 107.6 L200.8 98.2 L204.5 89.5 L208.3 81.6 L212.1 74.7 L215.9 68.9 L219.7 64.3 L223.5 60.9 L227.3 58.8 L231.1 58.0 L234.8 58.6 L238.6 60.6 L242.4 64.0 L246.2 68.6 L250.0 74.5 L253.8 81.5 L257.6 89.5 L261.4 98.3 L265.2 107.9 L268.9 118.1 L272.7 128.7 L276.5 139.5 L280.3 150.3 L284.1 161.0 L287.9 171.4 L291.7 181.3 L295.5 190.5 L299.2 198.9 L303.0 206.4 L306.8 212.8 L310.6 218.0 L314.4 222.0 L318.2 224.6 L322.0 225.9 L325.8 225.7 L329.5 224.1 L333.3 221.1 L337.1 216.7 L340.9 211.0 L344.7 204.1 L348.5 196.0 L352.3 187.0 L356.1 177.2 L359.8 166.7 L363.6 155.7 L367.4 144.4 L371.2 132.9 L375.0 121.5 L378.8 110.4 L382.6 99.6 L386.4 89.5 L390.2 80.1 L393.9 71.6 L397.7 64.1 L401.5 57.8 L405.3 52.8 L409.1 49.1 L412.9 46.8 L416.7 46.0 L420.5 46.6 L424.2 48.7 L428.0 52.3 L431.8 57.2 L435.6 63.4 L439.4 70.8 L443.2 79.3 L447.0 88.7 L450.8 98.9 L454.5 109.7 L458.3 121.0 L462.1 132.6 L465.9 144.2 L469.7 155.8 L473.5 167.0 L477.3 177.8 L481.1 188.0 L484.8 197.3 L488.6 205.7 L492.4 213.1 L496.2 219.2 L500.0 224.0 L503.8 227.4 L507.6 229.4 L511.4 230.0 L515.2 229.1 L518.9 226.7 L522.7 223.0 L526.5 217.9 L530.3 211.6 L534.1 204.2 L537.9 195.7 L541.7 186.3 L545.5 176.2 L549.2 165.5 L553.0 154.4 L556.8 143.0 L560.6 131.7 L564.4 120.4 L568.2 109.5 L572.0 99.0 L575.8 89.2 L579.5 80.2 L583.3 72.2 L587.1 65.3 L590.9 59.5 L594.7 55.1 L598.5 52.0 L602.3 50.3 L606.1 50.1 L609.8 51.3 L613.6 54.1 L617.4 58.3 L621.2 63.9 L625.0 70.7 L628.8 78.7 L632.6 87.8 L636.4 97.7 L640.2 108.4 L643.9 119.5 L647.7 131.1 L651.5 142.7 L655.3 154.3 L659.1 165.7 L662.9 176.7 L666.7 187.0 L670.5 196.5 L674.2 205.1 L678.0 212.6 L681.8 218.9 L685.6 223.8 L689.4 227.4 L693.2 229.4 L697.0 230.0 L700.8 229.0 L704.5 226.6 L708.3 222.6 L712.1 217.3 L715.9 210.6 L719.7 202.7 L723.5 193.8 L727.3 183.9 L731.1 173.3 L734.8 162.0 L738.6 150.3 L742.4 138.4 L746.2 126.4 L750.0 114.6 L753.8 103.2 L757.6 92.3 L761.4 82.0 L765.2 72.7 L768.9 64.4 L772.7 57.2 L776.5 51.4 L780.3 46.9 L784.1 43.8 L787.9 42.2 L791.7 42.2 L795.5 43.7 L799.2 46.6 L803.0 51.1 L806.8 57.0 L810.6 64.1 L814.4 72.4 L818.2 81.8 L822.0 92.1 L825.8 103.1 L829.5 114.7 L833.3 126.7 L837.1 138.8 L840.9 150.9 L844.7 162.8 L848.5 174.4 L852.3 185.3 L856.1 195.5 L859.8 204.7 L863.6 212.9 L867.4 219.9 L871.2 225.6 L875.0 229.8 L878.8 232.6 L882.6 233.9 L886.4 233.7 L890.2 231.9 L893.9 228.7 L897.7 224.0 L901.5 218.0 L905.3 210.8 L909.1 202.4 L912.9 193.0 L916.7 182.8 L920.5 171.9 L924.2 160.5 L928.0 148.7 L931.8 136.8 L935.6 125.0 L939.4 113.4 L943.2 102.2 L947.0 91.6 L950.8 81.8 L954.5 73.0 L958.3 65.2 L962.1 58.6 L965.9 53.3 L969.7 49.4 L973.5 47.0 L977.3 46.0 L981.1 46.6 L984.8 48.6 L988.6 52.0 L992.4 56.8 L996.2 62.9 L1000.0 70.2"/>
+          </svg>
+          <span class="cl cl-day" style="left:1%">Fri</span>
+          <span class="cl cl-day" style="left:19.2%">Sat</span>
+          <span class="cl cl-day" style="left:55.5%">Sun</span>
+          <span class="cl cl-day" style="left:92%">Mon</span>
+          <span class="cl cl-open" style="left:13.78%">Ring</span>
+          <span class="cl cl-open" style="left:51.1%">Ring</span>
+          <span class="cl cl-open" style="left:88.4%">Ring</span>
+          <span class="cl cl-floor">Floor 2.2 m</span>
+          <span class="cl cl-hw" style="left:4.34%;top:19.3%">HW 14:52</span>
+          <span class="cl cl-hw" style="left:41.69%;top:16.4%">HW 15:31</span>
+          <span class="cl cl-hw" style="left:78.99%;top:15%">HW 16:08</span>
+          <span class="cl-dot" style="left:13.74%;top:80.7%"></span>
+          <span class="cl-dot" style="left:51.09%;top:82.1%"></span>
+          <span class="cl-dot" style="left:88.38%;top:83.6%"></span>
+          <span class="cl cl-lw" style="left:13.74%">LW 21:04</span>
+          <span class="cl cl-lw" style="left:51.09%">LW 21:43</span>
+          <span class="cl cl-lw" style="left:88.38%">LW 22:20</span>
+        </div>
+        </div>
+      </figure>
+      <div class="panel table-panel">
+        <table class="tide-table">
+          <caption class="sr">Tide times and stage hours for each night</caption>
+          <thead>
+            <tr><th scope="col">Night</th><th scope="col">High water</th><th scope="col">Low water</th><th scope="col">The Ring</th><th scope="col">The Dunes</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Fri 27 Aug</th><td data-label="High water">14:52 · 4.9 m</td><td data-label="Low water">21:04 · 0.6 m</td><td data-label="The Ring" class="ring-hours">18:30–23:40</td><td data-label="The Dunes">14:00–04:00</td></tr>
+            <tr><th scope="row">Sat 28 Aug</th><td data-label="High water">15:31 · 5.1 m</td><td data-label="Low water">21:43 · 0.5 m</td><td data-label="The Ring" class="ring-hours">19:10–00:20</td><td data-label="The Dunes">12:00–04:00</td></tr>
+            <tr><th scope="row">Sun 29 Aug</th><td data-label="High water">16:08 · 5.2 m</td><td data-label="Low water">22:20 · 0.4 m</td><td data-label="The Ring" class="ring-hours">19:45–01:00</td><td data-label="The Dunes">12:00–02:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- The beach. The scene: the camera climbs over the dunes and looks back at the Ring. -->
+  <section id="beach" class="section on-night sky-night" data-stop="beach" data-tide="0.05">
+    <div class="wrap">
+      <div class="section-head narrow-head">
+        <p class="eyebrow">The beach</p>
+        <h2 class="display">Before the sea goes out.</h2>
+      </div>
+      <dl class="panel numbers">
+        <div><dt>Floor at low water</dt><dd>1.2<small>km</small></dd></div>
+        <div><dt>Nights</dt><dd>3</dd></div>
+        <div><dt>Stages</dt><dd>2</dd></div>
+        <div><dt>On the sand</dt><dd>8,000</dd></div>
+      </dl>
+      <div class="info-grid">
+        <article class="panel info">
+          <h3>Getting there</h3>
+          <p>Merrow station is a twelve-minute walk from the dune gate. Shuttle buses run from Calder every twenty minutes, all night. No cars on the sand; bike racks at the gate.</p>
+        </article>
+        <article class="panel info">
+          <h3>Camping on the dunes</h3>
+          <p>Pitch up from Thursday 18:00 to Monday 12:00 behind the high-water line, with showers, lockers, phone charging and a café that opens at sunrise.</p>
+        </article>
+        <article class="panel info info-warn">
+          <h3>The sea always comes back</h3>
+          <p>When the horns sound, the Ring closes and everyone walks up to the Dunes. Lifeguards and tide wardens are on the sand all night. Never stay out on the flats.</p>
+        </article>
+        <article class="panel info">
+          <h3>Access</h3>
+          <p>Matting runs from the gate to the Ring, and a raised viewing deck stands beside it, above the water at every tide. Free companion tickets on request.</p>
+        </article>
+        <article class="panel info">
+          <h3>Leave only footprints</h3>
+          <p>No glass, no single-use plastic. Cups are deposit-return, and the tide takes everything else, so we pick the beach clean every morning.</p>
+        </article>
+        <article class="panel info">
+          <h3>18+</h3>
+          <p>Lowtide is for over-18s. Bring photo ID that matches your ticket name; you swap it for a wristband at the dune gate.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tickets. The scene: the flood comes back and the Ring stands in the water at dawn. -->
+  <section id="tickets" class="section sky-tickets" data-stop="tickets" data-tide="0.8">
+    <svg class="standin standin-dawn" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+      <rect class="sb-dawn-sea" x="0" y="560" width="1440" height="340"/>
+      <g class="sb-ring-echo"><ellipse cx="1130" cy="640" rx="104" ry="36"/></g>
+      <rect class="sb-deck" x="990" y="560" width="280" height="10" rx="2"/>
+      <circle class="sb-ring" cx="1130" cy="452" r="104"/>
+    </svg>
+    <div class="wrap">
+      <div class="section-head narrow-head">
+        <p class="eyebrow">Tickets</p>
+        <h2 class="display">Be on the sand when the sea leaves.</h2>
+        <p class="lead">Prices include booking fees. Pay in three from £57. Under-18s cannot be admitted.</p>
+      </div>
+      <div class="tickets">
+        <article class="ticket ticket-sold" aria-label="Tier 1 weekend: sold out">
+          <p class="tier">Tier 1 · Weekend</p>
+          <p class="price"><s>£139</s></p>
+          <p class="stamp" aria-hidden="true">Sold out</p>
+          <p class="ticket-note">Gone in nine minutes.</p>
+        </article>
+        <article class="ticket">
+          <p class="tier">Day</p>
+          <p class="price">£74</p>
+          <ul class="perks"><li>One night on the Ring</li><li>The Dunes from noon</li><li>Pick Fri, Sat or Sun</li></ul>
+          <a class="button" href="#tickets">Buy a day<span class="knob-dot" aria-hidden="true">→</span></a>
+        </article>
+        <article class="ticket ticket-main">
+          <p class="tier">Weekend</p>
+          <p class="price">£169</p>
+          <ul class="perks"><li>All three tides</li><li>The Dunes every day</li><li>Sunrise sets on Monday</li></ul>
+          <a class="button" href="#tickets">Buy the weekend<span class="knob-dot" aria-hidden="true">→</span></a>
+        </article>
+        <article class="ticket">
+          <p class="tier">Weekend + dune camping</p>
+          <p class="price">£209</p>
+          <ul class="perks"><li>Everything in Weekend</li><li>Thursday to Monday pitch</li><li>Showers and lockers</li></ul>
+          <a class="button" href="#tickets">Buy with camping<span class="knob-dot" aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-mark" aria-hidden="true">Lowtide</p>
+  <div class="wrap footer-grid">
+    <p><strong>Lowtide</strong><br>Merrow Sands · 27–29 August 2027</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#lineup">Lineup</a>
+      <a href="#tides">Tide times</a>
+      <a href="#beach">The beach</a>
+      <a href="#tickets">Tickets</a>
+    </nav>
+    <p class="fine">Placeholder content: the lineup, prices, place and tide times on this page are invented for the design and must be replaced before launch.</p>
+  </div>
+</footer>
+
+<!-- The 3D bay (bay.js) mounts its canvas here: the last child of <body>, fixed, under the content. -->
+<div class="scene-layer" aria-hidden="true"></div>
+</body>
+</html>
